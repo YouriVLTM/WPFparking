@@ -78,6 +78,9 @@
     <Compile Include="View\Reserveren.xaml.cs">
       <DependentUpon>Reserveren.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Statistiek.xaml.cs">
       <DependentUpon>Statistiek.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Reserveren.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
