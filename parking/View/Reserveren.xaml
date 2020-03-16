@@ -6,9 +6,136 @@
       xmlns:local="clr-namespace:parking.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"  
       Title="Reserveren">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <StackPanel Margin="20" >
+            <TextBlock Text="Reservatie" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Persoonlijk Gegevens" FontWeight="Bold" FontSize="19"  Margin="0,0,0,10"/>
+
+            
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0">                   
+                    
+                   
+                        <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="Naam"
+          Text="{Binding Name}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="Nummerplaat"
+          Text="{Binding Name}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="Email"
+          Text="{Binding Name}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="GSM nummer"
+          Text="{Binding Name}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+                </StackPanel>
+
+
+
+                <StackPanel Grid.Column="0" Grid.Row="1">
+
+                    <TextBlock Text="Start" FontWeight="Bold" FontSize="19"  Margin="0,15,0,5"/>
+
+
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="Locatie"
+          Text="{Binding Name}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+
+                    <materialDesign:TimePicker
+                    Margin="10,0,0,0"
+                    Is24Hours="True"
+
+                     
+  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+  materialDesign:HintAssist.Hint="Uur" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <TextBlock Text="Verlaat" FontWeight="Bold" FontSize="19"  Margin="0,15,0,5"/>
+
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="Locatie"
+          Text="{Binding Name}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+                    
+                    <materialDesign:TimePicker
+                    Margin="10,0,0,0"
+                    Is24Hours="True"
+
+                     
+  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+  materialDesign:HintAssist.Hint="Uur" />
+                </StackPanel>
+
+               
+
+
+            </Grid>
+            
+
+            <Button
+    Style="{StaticResource MaterialDesignRaisedButton}"
+                HorizontalAlignment="Left"
+   Width="200"
+    ToolTip="Resource name: MaterialDesignRaisedButton"
+                Margin="0,0,0,30">
+               Parking plaats bekijken
+            </Button>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
+                <TextBlock Text="Locatie" FontWeight="Bold" Padding="0,0,10,0"/>
+                <TextBlock Text="Locatie" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+            </StackPanel>
+
+
+            <Button
+    Style="{StaticResource MaterialDesignRaisedButton}"
+                HorizontalAlignment="Left"
+   Width="200"
+    ToolTip="Resource name: MaterialDesignRaisedButton">
+               Reserveren
+            </Button>
+
+        </StackPanel>
+    </ScrollViewer>
 </Page>

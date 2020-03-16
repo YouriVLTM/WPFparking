@@ -64,7 +64,7 @@
         </Grid>
         
         <Grid Margin="200,30,0,0" >
-            <Frame Source="ParkingDetails.xaml" Name="frame" NavigationUIVisibility="Hidden" >
+            <Frame Source="Statistiek.xaml" Name="frame" NavigationUIVisibility="Hidden" >
             </Frame>
         </Grid>
     </Grid>
