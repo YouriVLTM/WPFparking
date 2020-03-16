@@ -1,0 +1,197 @@
+﻿<Page x:Class="parking.View.Parking"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:parking.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"  
+      
+      Title="Parking">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <StackPanel Margin="20" >
+            <TextBlock Text="Live Parking" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
+
+
+            <WrapPanel Margin="0,0,0,30">
+
+                <DatePicker
+  Width="100"
+  materialDesign:HintAssist.Hint="Pick Date"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                <materialDesign:TimePicker
+                    Margin="10,0,0,0"
+                    Is24Hours="True"
+  Width="100"
+                     
+  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+  materialDesign:HintAssist.Hint="Custom hint" />
+                
+            </WrapPanel>
+           
+            
+            <!--
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="9*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+
+
+
+                    <Button
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                        Width="100"
+                    >
+                    Set Live</Button>
+
+                    <TextBlock Grid.Column="0" Text="DAG" Padding="0,0,10,0" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Right"/>
+                </StackPanel>
+
+               
+                <Slider
+                  Minimum="0"
+                  Maximum="100"
+                  Style="{StaticResource MaterialDesignDiscreteSlider}"
+                  ToolTip="MaterialDesignDiscreteSlider"
+                  Value="50"
+                  Grid.Column="1" />
+            </Grid>
+
+-->
+            
+            <WrapPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                         Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}"
+                        Margin="0,0,0,10"/>
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                        Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                         Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}"
+                        Margin="0,0,0,10"/>
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                        Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                         Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}"
+                        Margin="0,0,0,10"/>
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                        Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}" />
+                </StackPanel>
+
+            </WrapPanel>
+            <!--
+            <Separator
+               Height="4"
+               Width="Auto"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Bottom"                   
+               Background="Black" 
+                Margin="0,10,0,5"/>
+
+            <Separator
+               Height="4"
+               Width="Auto"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Bottom"                   
+               Background="Black"
+                Margin="0,5,0,10"/>
+
+            <WrapPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                         Stroke="{Binding Source={DynamicResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={DynamicResource PrimaryHueLightBrush}}"
+                        Margin="0,0,0,10"/>
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                        Stroke="{Binding Source={DynamicResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={DynamicResource PrimaryHueLightBrush}}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                         Stroke="{Binding Source={DynamicResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={DynamicResource PrimaryHueLightBrush}}"
+                        Margin="0,0,0,10"/>
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                        Stroke="{Binding Source={DynamicResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={DynamicResource PrimaryHueLightBrush}}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                         Stroke="{Binding Source={DynamicResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={DynamicResource PrimaryHueLightBrush}}"
+                        Margin="0,0,0,10"/>
+                    <Rectangle
+                        Width="50"
+                        Height="70"
+                        Stroke="{Binding Source={DynamicResource PrimaryHueMidBrush}}" 
+                        StrokeThickness="2"
+                        Fill="{Binding Source={DynamicResource PrimaryHueLightBrush}}" />
+                </StackPanel>
+
+            </WrapPanel>
+
+-->
+
+
+
+        </StackPanel>
+    </ScrollViewer>
+    
+</Page>
