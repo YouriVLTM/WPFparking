@@ -1,0 +1,5 @@
+﻿INSERT INTO [dbo].[UserLecture] ([Id], [lectureId], [userId]) VALUES (1, 1, 5)
+INSERT INTO [dbo].[UserLecture] ([Id], [lectureId], [userId]) VALUES (2, 2, 4)
+INSERT INTO [dbo].[UserLecture] ([Id], [lectureId], [userId]) VALUES (3, 3, 3)
+INSERT INTO [dbo].[UserLecture] ([Id], [lectureId], [userId]) VALUES (4, 4, 2)
+INSERT INTO [dbo].[UserLecture] ([Id], [lectureId], [userId]) VALUES (5, 5, 1)

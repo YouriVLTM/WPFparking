@@ -10,6 +10,7 @@
 
         <StackPanel>
             <Image Height="200" Source="/Assert/carPark.jpg" HorizontalAlignment="Center"/>
+            <TextBlock Text="Youri Van Laer" HorizontalAlignment="Center" FontSize="22"/>
             <TextBlock Text="Parking programma" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
             <ProgressBar
   Style="{StaticResource MaterialDesignCircularProgressBar}"
