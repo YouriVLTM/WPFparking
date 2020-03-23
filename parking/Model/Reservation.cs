@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class Lecture : INotifyPropertyChanged
+    class Reservation : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private int id;
-        private DateTime startTime;
-        private DateTime endTime;
-        private string location;
-        private string course;
+        private int userId;
+        private int parkPlaceId;
+        private string status;
         private DateTime date;
-        private int buildingId;
+        private DateTime beginTime;
+        private DateTime endTime;
+
 
         public int Id
         {
@@ -33,54 +34,42 @@ namespace parking.Model
             }
         }
 
-        public DateTime StartTime
+        public int UserId
         {
             get
             {
-                return startTime;
+                return userId;
             }
             set
             {
-                startTime = value;
+                userId = value;
                 NotifyPropertyChanged();
             }
         }
 
-        public DateTime EndTime
+        public int ParkPlaceId
         {
             get
             {
-                return endTime;
+                return parkPlaceId;
             }
             set
             {
-                endTime = value;
+                parkPlaceId = value;
                 NotifyPropertyChanged();
             }
         }
 
-        public string Location
-        {
-            get
-            {
-                return location;
-            }
-            set
-            {
-                location = value;
-                NotifyPropertyChanged();
-            }
-        }
 
-        public string Course
+        public string Status
         {
             get
             {
-                return course;
+                return status;
             }
             set
             {
-                course = value;
+                status = value;
                 NotifyPropertyChanged();
             }
         }
@@ -98,18 +87,33 @@ namespace parking.Model
             }
         }
 
-        public int BuildingId
+        public DateTime BeginTime
         {
             get
             {
-                return buildingId;
+                return beginTime;
             }
             set
             {
-                buildingId = value;
+                beginTime = value;
                 NotifyPropertyChanged();
             }
         }
+
+        public DateTime EndTime
+        {
+            get
+            {
+                return endTime;
+            }
+            set
+            {
+                endTime = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
 
 
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -119,13 +123,5 @@ namespace parking.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-
-
-
-
-
-
-
     }
 }
