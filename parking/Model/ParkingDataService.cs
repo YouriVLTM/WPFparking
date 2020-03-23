@@ -1,18 +1,18 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using Dapper;
-using System.Configuration;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using Dapper;
+using parking.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using parking.Extensions;
 
 namespace parking.Model
 {
-    class UserDataService
+    class ParkingDataService
     {
         // Ophalen ConnectionString uit App.config
         private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -22,43 +22,43 @@ namespace parking.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
 
-        public ObservableCollection<User> GetUsers()
+        public ObservableCollection<Parking> GetParking()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from User order by Id";
+            string sql = "Select * from Pakring order by Id";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen
-            ObservableCollection<User> users = db.Query<User>(sql).ToObservableCollection();
+            ObservableCollection<Parking> parkings = db.Query<Parking>(sql).ToObservableCollection();
 
-            return users;
+            return parkings;
         }
 
-        public void UpdateUser(User user)
+        public void UpdateParking(Parking parking)
         {
             // SQL statement update 
-            string sql = "Update User set prename = @prename, lastname = @lastname, phoneNumber=@phoneNumber, email=@email where Id = @id";
+            string sql = "Update Parking set name=@name where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { user.Prename, user.Lastname, user.PhoneNumber, user.Email, user.Id });
+            db.Execute(sql, new { parking.Name, parking.Id });
         }
 
-        public void DeleteUser(User user)
+        public void DeleteParking(Parking parking)
         {
             // SQL statement delete 
-            string sql = "Delete User where Id = @id";
+            string sql = "Delete Parking where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { user.Id });
+            db.Execute(sql, new { parking.Id });
         }
 
-        public void InsertUser(User user)
+        public void InsertParking(Parking parking)
         {
-            // SQL statement delete 
-            string sql = "Insert User(prename,lastname,phoneNumber,email) values(@prename,@lastname,@phoneNumber,@email)";
+            // SQL statement Insert 
+            string sql = "Insert Parking(name) values(@name)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { user.Prename, user.Lastname, user.PhoneNumber, user.Email });
+            db.Execute(sql, new { parking.Name });
         }
     }
 }

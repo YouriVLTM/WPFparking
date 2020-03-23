@@ -1,19 +1,20 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using Dapper;
-using System.Configuration;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using Dapper;
+using parking.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using parking.Extensions;
 
 namespace parking.Model
 {
-    class UserDataService
+    class BuildingDataService
     {
+
         // Ophalen ConnectionString uit App.config
         private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
 
@@ -22,43 +23,45 @@ namespace parking.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
 
-        public ObservableCollection<User> GetUsers()
+        public ObservableCollection<Building> GetBuilding()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from User order by Id";
+            string sql = "Select * from Building order by Id";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen
-            ObservableCollection<User> users = db.Query<User>(sql).ToObservableCollection();
+            ObservableCollection<Building> buildings = db.Query<Building>(sql).ToObservableCollection();
 
-            return users;
+            return buildings;
         }
 
-        public void UpdateUser(User user)
+        public void UpdateBuilding(Building building)
         {
             // SQL statement update 
-            string sql = "Update User set prename = @prename, lastname = @lastname, phoneNumber=@phoneNumber, email=@email where Id = @id";
+            string sql = "Update Building set place = @place, description = @description, location=@location where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { user.Prename, user.Lastname, user.PhoneNumber, user.Email, user.Id });
+            db.Execute(sql, new { building.Place, building.Description, building.Location, building.Id });
         }
 
-        public void DeleteUser(User user)
+        public void DeleteBuidling(Building building)
         {
             // SQL statement delete 
-            string sql = "Delete User where Id = @id";
+            string sql = "Delete Building where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { user.Id });
+            db.Execute(sql, new { building.Id });
         }
 
-        public void InsertUser(User user)
+        public void InsertBuilding(Building building)
         {
             // SQL statement delete 
-            string sql = "Insert User(prename,lastname,phoneNumber,email) values(@prename,@lastname,@phoneNumber,@email)";
+            string sql = "Insert Building(place,description,location) values(@prename,@lastname,@phoneNumber)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { user.Prename, user.Lastname, user.PhoneNumber, user.Email });
+            db.Execute(sql, new { building.Place, building.Description, building.Location});
         }
+
+
     }
 }

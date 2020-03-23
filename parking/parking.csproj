@@ -75,13 +75,19 @@
     </ApplicationDefinition>
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Model\Building.cs" />
+    <Compile Include="Model\BuildingDataService.cs" />
     <Compile Include="Model\Lecture.cs" />
+    <Compile Include="Model\LectureDataService.cs" />
     <Compile Include="Model\Parking.cs" />
+    <Compile Include="Model\ParkingDataService.cs" />
     <Compile Include="Model\ParkPlace.cs" />
+    <Compile Include="Model\ParkPlaceDataService.cs" />
     <Compile Include="Model\Reservation.cs" />
+    <Compile Include="Model\ReservationDataService.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserDataService.cs" />
     <Compile Include="Model\UserLecture.cs" />
+    <Compile Include="Model\UserLectureDataService.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="View\Parking.xaml.cs">

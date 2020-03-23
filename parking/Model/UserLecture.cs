@@ -12,8 +12,22 @@ namespace parking.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private int id;
         private int lectureId;
         private string userId;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public int LectureId
         {

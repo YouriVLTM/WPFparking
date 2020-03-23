@@ -14,7 +14,9 @@ namespace parking.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         private int id;
-        private string name;
+        private string place;
+        private string description;
+        private string location;
 
         public int Id
         {
@@ -29,15 +31,42 @@ namespace parking.Model
             }
         }
 
-        public string Name
+        public string Place
         {
             get
             {
-                return name;
+                return place;
             }
             set
             {
-                name = value;
+                place = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public string Location
+        {
+            get
+            {
+                return location;
+            }
+            set
+            {
+                location = value;
                 NotifyPropertyChanged();
             }
         }
