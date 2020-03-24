@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class User : INotifyPropertyChanged, IDataErrorInfo
+    public class User : INotifyPropertyChanged, IDataErrorInfo
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

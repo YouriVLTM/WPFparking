@@ -10,10 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using parking.Extensions;
 
+
 namespace parking.Model
 {
-    class UserDataService
+    public class UserDataService
     {
+        public static string connectionStrings = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
+        //test 
+        //private static string connectionStringYouri = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
         // Ophalen ConnectionString uit App.config
         private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
 

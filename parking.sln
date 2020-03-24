@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parking", "parking\parking.csproj", "{81C8037B-9E87-4A23-831F-A23A6E25A447}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestParking", "UnitTestUsers\UnitTestParking.csproj", "{151C100C-912E-4A97-B1FB-F233A61B3603}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{81C8037B-9E87-4A23-831F-A23A6E25A447}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C8037B-9E87-4A23-831F-A23A6E25A447}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C8037B-9E87-4A23-831F-A23A6E25A447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{151C100C-912E-4A97-B1FB-F233A61B3603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{151C100C-912E-4A97-B1FB-F233A61B3603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{151C100C-912E-4A97-B1FB-F233A61B3603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{151C100C-912E-4A97-B1FB-F233A61B3603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

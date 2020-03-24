@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace parking.ViewModel
 {
-    class BaseCommand : ICommand
+    public class BaseCommand : ICommand
     {
         Action actie;
 

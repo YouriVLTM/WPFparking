@@ -1,4 +1,6 @@
-﻿using parking.Model;
+﻿using parking.Extensions;
+using parking.Messages;
+using parking.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +11,7 @@ using System.Windows.Input;
 
 namespace parking.ViewModel
 {
-    class UsersViewModel : BaseViewModel
+    public class UsersViewModel : BaseViewModel
     {
 
         private ObservableCollection<User> users;
@@ -71,6 +73,8 @@ namespace parking.ViewModel
         }
 
 
+        private DialogService dialogService;
+
         public UsersViewModel()
         {
             //laden data
@@ -81,29 +85,43 @@ namespace parking.ViewModel
             dialogService = new DialogService();
 
             //koppelen commands
-            WijzigenCommand = new BaseCommand(WijzigenKoffie);
-            ToevoegenCommand = new BaseCommand(ToevoegenKoffie);
+            WijzigenCommand = new BaseCommand(WijzigenUser);
+            ToevoegenCommand = new BaseCommand(ToevoegenUser);
 
             //luisteren naar messages vanuit detailvenster
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
 
         }
 
-        private void ToevoegenKoffie()
+        private void OnMessageReceived(UpdateFinishedMessage message)
+        {
+            //na update of delete mag detailvenster sluiten
+            dialogService.CloseDetailDialog();
+
+            //na Delete/Insert moet collectie Koffies terug ingeladen worden
+            if (message.Type != UpdateFinishedMessage.MessageType.Updated)
+            {
+                UserDataService ds = new UserDataService();
+                users = ds.GetUsers();
+            }
+
+        }
+
+        private void ToevoegenUser()
         {
             SelectedUser = new User();
 
-            Messenger.Default.Send<Koffie>(SelectedKoffie);
+            Messenger.Default.Send<User>(SelectedUser);
 
             dialogService.ShowDetailDialog();
 
         }
 
-        private void WijzigenKoffie()
+        private void WijzigenUser()
         {
-            if (SelectedKoffie != null)
+            if (SelectedUser != null)
             {
-                Messenger.Default.Send<Koffie>(SelectedKoffie);
+                Messenger.Default.Send<User>(SelectedUser);
 
                 dialogService.ShowDetailDialog();
             }
