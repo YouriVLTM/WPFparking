@@ -11,7 +11,9 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"    
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1024"
         >
@@ -44,7 +46,7 @@
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="CarPark" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Parking" VerticalAlignment="Center" Margin="20 10"/>
+                            <Button Content="Parking" Command="ParkingCommand" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
@@ -64,7 +66,7 @@
         </Grid>
         
         <Grid Margin="200,30,0,0" >
-            <Frame Source="Statistiek.xaml" Name="frame" NavigationUIVisibility="Hidden" >
+            <Frame Source="Home.xaml" Name="frame" NavigationUIVisibility="Hidden" >
             </Frame>
         </Grid>
     </Grid>

@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace parking.ViewModel
 {
-    class ParkPlaceViewModel : BaseViewModel
+    class ParkingViewModel : BaseViewModel
     {
 
         private ObservableCollection<ParkPlace> parkPlaces;
@@ -75,7 +75,7 @@ namespace parking.ViewModel
 
         private DialogService dialogService;
 
-        public ParkPlaceViewModel()
+        public ParkingViewModel()
         {
             //laden data
             ParkPlaceDataService ds = new ParkPlaceDataService();

@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\ApplicationHelper.cs" />
     <Compile Include="Extensions\DialogService.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\Messenger.cs" />
@@ -92,10 +93,13 @@
     <Compile Include="Model\UserDataService.cs" />
     <Compile Include="Model\UserLecture.cs" />
     <Compile Include="Model\UserLectureDataService.cs" />
+    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Extensions\PageNavigationService.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ParkingDetailsViewModel.cs" />
-    <Compile Include="ViewModel\ParkPlaceViewModel.cs" />
+    <Compile Include="ViewModel\ParkingViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\Parking.xaml.cs">
       <DependentUpon>Parking.xaml</DependentUpon>
