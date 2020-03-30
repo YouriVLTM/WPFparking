@@ -45,6 +45,17 @@ namespace parking.Model
                 NotifyPropertyChanged();
             }
         }
+
+        public Parking parking
+        {
+            get { return parking; }
+            set
+            {
+                parking = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public int BuildingId
         {
             get
@@ -54,6 +65,16 @@ namespace parking.Model
             set
             {
                 buildingId = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Building building
+        {
+            get { return building; }
+            set
+            {
+                building = value;
                 NotifyPropertyChanged();
             }
         }

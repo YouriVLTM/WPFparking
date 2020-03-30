@@ -42,6 +42,16 @@ namespace parking.Model
             }
         }
 
+        public Lecture lecture
+        {
+            get { return lecture; }
+            set
+            {
+                lecture = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public string UserId
         {
             get
@@ -52,6 +62,17 @@ namespace parking.Model
             {
                 userId = value;
                 NotifyPropertyChanged();
+            }
+        }
+
+        public User user
+        {
+            get { return user; }
+            set
+            {
+                user = value;
+                NotifyPropertyChanged();
+                
             }
         }
 

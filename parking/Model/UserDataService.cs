@@ -15,7 +15,7 @@ namespace parking.Model
 {
     public class UserDataService
     {
-        public static string connectionStrings = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
+        //public static string connectionStrings = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
         //test 
         //private static string connectionStringYouri = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
         // Ophalen ConnectionString uit App.config
@@ -29,7 +29,7 @@ namespace parking.Model
         public ObservableCollection<User> GetUsers()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from User order by Id";
+            string sql = "Select * from Userx";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen

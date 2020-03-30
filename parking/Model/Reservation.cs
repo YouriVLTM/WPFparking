@@ -47,6 +47,16 @@ namespace parking.Model
             }
         }
 
+        public User user
+        {
+            get { return user; }
+            set
+            {
+                user = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public int ParkPlaceId
         {
             get
@@ -56,6 +66,16 @@ namespace parking.Model
             set
             {
                 parkPlaceId = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public ParkPlace parkPlace
+        {
+            get { return parkPlace; }
+            set
+            {
+                parkPlace = value;
                 NotifyPropertyChanged();
             }
         }
