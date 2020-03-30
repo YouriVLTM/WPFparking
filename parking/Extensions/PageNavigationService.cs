@@ -28,7 +28,7 @@ namespace parking.Extensions
                     var home = new Home();
                     ApplicationHelper.NavigationService.Navigate(home);
                     break;
-                    s
+                    
                 case "Reserveren":
                     var reserveren = new Reserveren();
                     ApplicationHelper.NavigationService.Navigate(reserveren);

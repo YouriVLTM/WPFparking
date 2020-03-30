@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace parking.ViewModel
 {
-    class MainWindowViewModel
+    public class MainWindowViewModel
     {
 
         public MainWindowViewModel()

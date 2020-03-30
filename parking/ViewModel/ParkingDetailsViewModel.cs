@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace parking.ViewModel
 {
-    class ParkingDetailsViewModel
+    public class ParkingDetailsViewModel
     {
     }
 }

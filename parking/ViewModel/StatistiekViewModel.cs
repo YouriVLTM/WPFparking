@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace parking.ViewModel
 {
-    class StatistiekViewModel
+    public class StatistiekViewModel
     {
     }
 }

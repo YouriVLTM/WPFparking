@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class Building : INotifyPropertyChanged
+    public class Building : BaseModel
     {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private int id;
         private string place;
         private string description;
@@ -72,13 +69,7 @@ namespace parking.Model
         }
 
 
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        
 
 
     }

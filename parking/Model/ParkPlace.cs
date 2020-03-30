@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class ParkPlace : INotifyPropertyChanged
+    public class ParkPlace : BaseModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private int id;
         private int parkingId;
         private int buildingId;
         private int row;
         private int cel;
         private string description;
-       
+
+        private Parking parking;
+        private Building building;
+
 
         public int Id
         {
@@ -46,7 +47,7 @@ namespace parking.Model
             }
         }
 
-        public Parking parking
+        public Parking Parking
         {
             get { return parking; }
             set
@@ -69,7 +70,7 @@ namespace parking.Model
             }
         }
 
-        public Building building
+        public Building Building
         {
             get { return building; }
             set
@@ -117,13 +118,5 @@ namespace parking.Model
             }
         }
 
-
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

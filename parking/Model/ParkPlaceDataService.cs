@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class ParkPlaceDataService
+    public class ParkPlaceDataService
     {
         // Ophalen ConnectionString uit App.config
         private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -25,13 +25,19 @@ namespace parking.Model
         public ObservableCollection<ParkPlace> GetParkPlace()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from ParkPlace order by Id";
+            string sql = "Select * from ParkPlace pp JOIN Building bu ON pp.buildingId = bu.Id JOIN Parking pa ON pp.parkingId = pa.Id";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen
-            ObservableCollection<ParkPlace> parkPlaces = db.Query<ParkPlace>(sql).ToObservableCollection();
+            var parkPlaces = db.Query<ParkPlace, Building, Parking, ParkPlace>(sql, (parkPlace, building, parking) =>
+            {
+                parkPlace.Parking = parking;
+                parkPlace.Building = building;
+                return parkPlace;
+            },
+            splitOn: "Id");
 
-            return parkPlaces;
+            return new ObservableCollection<ParkPlace>((List<ParkPlace>)parkPlaces);
         }
 
         public void UpdateParkPlace(ParkPlace parkplace)

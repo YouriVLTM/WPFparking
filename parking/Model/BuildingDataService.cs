@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class BuildingDataService
+    public class BuildingDataService
     {
 
         // Ophalen ConnectionString uit App.config

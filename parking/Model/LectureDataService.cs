@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    class LectureDataService
+    public class LectureDataService
     {
         // Ophalen ConnectionString uit App.config
         private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
