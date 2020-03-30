@@ -48,7 +48,7 @@
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CarPark" Height="25" Width="25" Margin="10"/>s
+                            <materialDesign:PackIcon Kind="CarPark" Height="25" Width="25" Margin="10"/>
                             <Button Content="Parking" Command="{Binding ParkingCommand }" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
