@@ -13,7 +13,25 @@ namespace parking.ViewModel
 
         public MainWindowViewModel()
         {
-            ParkingCommand = new BaseCommand(NaarParkingPage);
+            ParkingCommand = new BaseCommand(GoToParkingPage);
+            HomeCommand = new BaseCommand(GoToHomePage);
+            ReserverenCommand = new BaseCommand(GoToReserverenCommand);
+            StatistiekCommand = new BaseCommand(GoToStatistiekCommand);
+
+        }
+
+        private ICommand statistiekCommand;
+        public ICommand StatistiekCommand
+        {
+            get
+            {
+                return statistiekCommand;
+            }
+
+            set
+            {
+                statistiekCommand = value;
+            }
         }
 
         private ICommand parkingCommand;
@@ -30,11 +48,57 @@ namespace parking.ViewModel
             }
         }
 
-        private void NaarParkingPage()
+        private ICommand homeCommand;
+        public ICommand HomeCommand
+        {
+            get
+            {
+                return homeCommand;
+            }
+
+            set
+            {
+                homeCommand = value;
+            }
+        }
+
+        private ICommand reserverenCommand;
+        public ICommand ReserverenCommand
+        {
+            get
+            {
+                return reserverenCommand;
+            }
+
+            set
+            {
+                reserverenCommand = value;
+            }
+        }
+
+        private void GoToParkingPage()
         {
             PageNavigationService nav = new PageNavigationService();
             nav.Navigate("Parking");
 
+        }
+
+        private void GoToHomePage()
+        {
+            PageNavigationService nav = new PageNavigationService();
+            nav.Navigate("Home");
+        }
+
+        private void GoToReserverenCommand()
+        {
+            PageNavigationService nav = new PageNavigationService();
+            nav.Navigate("Reserveren");
+        }
+
+        private void GoToStatistiekCommand()
+        {
+            PageNavigationService nav = new PageNavigationService();
+            nav.Navigate("Statistiek");
         }
 
 

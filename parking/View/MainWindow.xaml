@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:parking"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.FontWeight="Regular"
+        xmlns:i="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"
+     FontFamily="{DynamicResource MaterialDesignFont}"      
         
+        DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=MainWindowViewModel}"
         
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1024"
@@ -37,28 +39,29 @@
                     </StackPanel>
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="{Binding Source={StaticResource PrimaryHueMidBrush}}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
                     <ListViewItem x:Name="ItemHome" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="HomeOutline" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                            <Button Content="Home" Command="{Binding HomeCommand }" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="CarPark" Height="25" Width="25" Margin="10"/>
-                            <Button Content="Parking" Command="ParkingCommand" VerticalAlignment="Center" Margin="20 10"/>
+                            <Button Content="Parking" Command="{Binding ParkingCommand }" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AlarmClockSnooze" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Reserveren" VerticalAlignment="Center"  Margin="20 10"/>
+                            <Button Content="Reserveren" Command="{Binding ReserverenCommand }" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ChartBar" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Statistiek" VerticalAlignment="Center"  Margin="20 10"/>
+                            <Button Content="Statistiek" Command="{Binding StatistiekCommand }" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
