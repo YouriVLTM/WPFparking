@@ -12,20 +12,14 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    public class ParkPlaceDataService
+    public class ParkPlaceDataService : BaseModelDataService
     {
-        // Ophalen ConnectionString uit App.config
-        private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
-
-        // Aanmaken van een object uit de IDbConnection class en instantiëren van een SqlConnection.
-        // Dit betekent dat de connectie met de database automatisch geopend wordt.
-        private static IDbConnection db = new SqlConnection(connectionString);
 
 
         public ObservableCollection<ParkPlace> GetParkPlace()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from ParkPlace pp JOIN Building bu ON pp.buildingId = bu.Id JOIN Parking pa ON pp.parkingId = pa.Id";
+            string sql = "Select * from ParkPlace pp JOIN Building bu ON pp.buildingId = bu.Id JOIN Parking pa ON pp.parkingId = pa.Id Order By row,cel";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen

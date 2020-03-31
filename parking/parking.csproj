@@ -80,6 +80,7 @@
     <Compile Include="Extensions\Messenger.cs" />
     <Compile Include="Messages\UpdateFinishedMessage.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\BaseModelDataService.cs" />
     <Compile Include="Model\Building.cs" />
     <Compile Include="Model\BuildingDataService.cs" />
     <Compile Include="Model\Lecture.cs" />

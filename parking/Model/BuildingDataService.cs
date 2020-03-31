@@ -12,16 +12,8 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    public class BuildingDataService
+    public class BuildingDataService : BaseModelDataService
     {
-
-        // Ophalen ConnectionString uit App.config
-        private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
-
-        // Aanmaken van een object uit de IDbConnection class en instantiëren van een SqlConnection.
-        // Dit betekent dat de connectie met de database automatisch geopend wordt.
-        private static IDbConnection db = new SqlConnection(connectionString);
-
 
         public ObservableCollection<Building> GetBuilding()
         {

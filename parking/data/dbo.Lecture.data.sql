@@ -1,3 +1,16 @@
+CREATE TABLE [dbo].[Lecture]
+(
+	[Id] INT NOT NULL,
+    [startTime] TIME NOT NULL,
+    [endTime] TIME NULL,
+    [location] VARCHAR(50) NULL,
+    [course] VARCHAR(50) NOT NULL,
+    [date] DATE NOT NULL,
+    [buildingId] INT NOT NULL,
+	PRIMARY KEY Clustered ([Id] ASC),
+	CONSTRAINT [FK_Lecture_Building] FOREIGN KEY ([buildingId]) REFERENCES [Building]([Id])
+)
+
 ﻿INSERT INTO [dbo].[Lecture] ([Id], [startTime], [endTime], [location], [course], [date], [buildingId]) VALUES (1, '08:30:00', '10:00:00', 'B202', 'Wiskunde', '20200418', 1)
 INSERT INTO [dbo].[Lecture] ([Id], [startTime], [endTime], [location], [course], [date], [buildingId]) VALUES (2, '08:30:00', '10:00:00', 'F202', 'Wiskunde', '20200518', 4)
 INSERT INTO [dbo].[Lecture] ([Id], [startTime], [endTime], [location], [course], [date], [buildingId]) VALUES (3, '08:30:00', '12:00:00', 'B202', 'Wiskunde', '20200325', 1)

@@ -15,21 +15,17 @@ namespace parking.Model
 {
     public class UserDataService
     {
-        //public static string connectionStrings = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
-        //test 
-        //private static string connectionStringYouri = ConfigurationManager.ConnectionStrings["youri"].ConnectionString;
         // Ophalen ConnectionString uit App.config
-        private static string connectionString = ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
+        protected static string connectionString = ConfigurationManager.ConnectionStrings["local"].ConnectionString;
 
         // Aanmaken van een object uit de IDbConnection class en instantiëren van een SqlConnection.
         // Dit betekent dat de connectie met de database automatisch geopend wordt.
-        private static IDbConnection db = new SqlConnection(connectionString);
-
+        protected static IDbConnection db = new SqlConnection(connectionString);
 
         public ObservableCollection<User> GetUsers()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Userx";
+            string sql = "Select * from Userx order by Id";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen
@@ -41,7 +37,7 @@ namespace parking.Model
         public void UpdateUser(User user)
         {
             // SQL statement update 
-            string sql = "Update User set prename = @prename, lastname = @lastname, phoneNumber=@phoneNumber, email=@email where Id = @id";
+            string sql = "Update Userx set prename = @prename, lastname = @lastname, phoneNumber=@phoneNumber, email=@email where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { user.Prename, user.Lastname, user.PhoneNumber, user.Email, user.Id });
@@ -50,7 +46,7 @@ namespace parking.Model
         public void DeleteUser(User user)
         {
             // SQL statement delete 
-            string sql = "Delete User where Id = @id";
+            string sql = "Delete Userx where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { user.Id });
@@ -59,7 +55,7 @@ namespace parking.Model
         public void InsertUser(User user)
         {
             // SQL statement delete 
-            string sql = "Insert User(prename,lastname,phoneNumber,email) values(@prename,@lastname,@phoneNumber,@email)";
+            string sql = "Insert Userx(prename,lastname,phoneNumber,email) values(@prename,@lastname,@phoneNumber,@email)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { user.Prename, user.Lastname, user.PhoneNumber, user.Email });

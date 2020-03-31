@@ -33,7 +33,6 @@ namespace UnitTestParking
         {
             var viewmodel = new UsersViewModel();
             Assert.AreEqual(8, viewmodel.Users.Count);
-
         }
 
         [TestMethod]
@@ -41,7 +40,7 @@ namespace UnitTestParking
         {
             var viewmodel = new UsersViewModel();
             viewmodel.SelectedUser = viewmodel.Users.First();
-            Assert.AreEqual("youri", viewmodel.SelectedUser.Prename);
+            Assert.AreEqual("Youri", viewmodel.SelectedUser.Prename);
 
         }
 
