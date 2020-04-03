@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using parking;
@@ -93,6 +95,24 @@ namespace UnitTestParking
             var viewmodel = new ParkingViewModel();
             viewmodel.SelectedParkPlace = viewmodel.ParkPlaces.First();
             Assert.AreEqual(5, viewmodel.SelectedParkPlace.Cel);
+
+        }
+
+        [TestMethod]
+        public void TestMethodSelectParkPlacesList()
+        {
+            var viewmodel = new ParkingViewModel();
+            ObservableCollection<ParkPlace> park = viewmodel.ParkPlaces;
+            Assert.AreEqual(1, 1);
+
+        }
+
+        [TestMethod]
+        public void TestMethodSelectParkPlacesRow()
+        {
+            var viewmodel = new ParkingViewModel();
+            List<ParkPlaceRow> park = viewmodel.ViewParkPlaces;
+            Assert.AreEqual(1, 1);
 
         }
 

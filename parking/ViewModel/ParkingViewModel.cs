@@ -29,6 +29,50 @@ namespace parking.ViewModel
             }
         }
 
+
+        private List<ParkPlaceRow> rowViewParkPlaces;
+
+        public List<ParkPlaceRow> RowViewParkPlaces
+        {
+            get{
+                return ViewParkPlaces();
+            }
+            set
+            {
+                rowViewParkPlaces = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private List<ParkPlaceRow> viewParkPlaces;
+
+        public List<ParkPlaceRow> ViewParkPlaces()
+        {
+                ParkPlaceRow parkrow = new ParkPlaceRow();
+                viewParkPlaces = new List<ParkPlaceRow>();
+                foreach (ParkPlace parkPlace in ParkPlaces)
+                {
+                    if (viewParkPlaces.Count() != parkPlace.Row)
+                    {
+                        parkrow = new ParkPlaceRow();
+                        parkrow.ParkPlace.Add(parkPlace);
+                        parkrow.RowNumber = parkPlace.Row;
+                        // lijst toevoegen
+                        //park view
+                        viewParkPlaces.Add(parkrow);
+                    }
+                    else
+                    {
+                        parkrow.ParkPlace.Add(parkPlace);
+                        parkrow.RowNumber = parkPlace.Row;
+                    }
+                }
+
+                return viewParkPlaces;
+        }
+
+
         private ParkPlace selectedParkPlace;
         public ParkPlace SelectedParkPlace
         {
@@ -80,6 +124,8 @@ namespace parking.ViewModel
             //laden data
             ParkPlaceDataService ds = new ParkPlaceDataService();
             parkPlaces = ds.GetParkPlace();
+
+            rowViewParkPlaces = ViewParkPlaces();
 
             //instantiëren DialogService als singleton
             dialogService = new DialogService();

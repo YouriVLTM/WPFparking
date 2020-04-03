@@ -20,9 +20,49 @@
       Title="Parking">
 
     <Page.Resources>
-        <Style x:Key="textblockRed" TargetType="TextBlock">
+        <!--<Style x:Key="textblockRed" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Red"/>
-        </Style>
+        </Style>-->
+        
+        <DataTemplate x:Key="rijItemTemplate">
+            <StackPanel Orientation="Vertical">
+                <StackPanel x:Name="groenblok">
+                    <Border
+                        Width="500"
+                        Height="10"
+						Background="ForestGreen"
+						Margin="5,5,5,5" />
+                </StackPanel>
+                <TextBlock Text="{Binding RowNumber}"/>
+                <ItemsControl ItemsSource="{Binding ParkPlace}" Margin="20">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Width="50"
+                                Height="70"
+								BorderBrush="{Binding Source={StaticResource PrimaryHueMidBrush}}"     
+                                Background="{Binding Source={StaticResource PrimaryHueLightBrush}}"
+								BorderThickness="2"
+                                Margin="5,5,5,5">
+                                <TextBlock Text="{Binding Id}"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Vertical" MaxHeight="200"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                    <Setter Property="Visibility" TargetName="groenblok" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        
+        
     </Page.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -49,9 +89,17 @@
             </WrapPanel>
 
 
+            <Grid>
+
+                <ItemsControl ItemsSource="{Binding RowViewParkPlaces}"
+					 ItemTemplate="{StaticResource rijItemTemplate}">
+                </ItemsControl>
+            </Grid>
 
 
-            <WrapPanel>
+
+
+            <!-- <WrapPanel>
                 <StackPanel Orientation="Vertical" Margin="0,0,10,0">
                     <Rectangle
                         Width="50"
@@ -117,56 +165,7 @@
                 Margin="0,5,0,10"/>
 
 
-            <WrapPanel>
-                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
-                    <Rectangle
-                        Width="50"
-                        Height="70"
-                         Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
-                        StrokeThickness="2"
-                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}"
-                        Margin="0,0,0,10"/>
-                    <Rectangle
-                        Width="50"
-                        Height="70"
-                        Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
-                        StrokeThickness="2"
-                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
-                    <Rectangle
-                        Width="50"
-                        Height="70"
-                         Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
-                        StrokeThickness="2"
-                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}"
-                        Margin="0,0,0,10"/>
-                    <Rectangle
-                        Width="50"
-                        Height="70"
-                        Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
-                        StrokeThickness="2"
-                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="0,0,10,0">
-                    <Rectangle
-                        Width="50"
-                        Height="70"
-                         Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
-                        StrokeThickness="2"
-                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}"
-                        Margin="0,0,0,10"/>
-                    <Rectangle
-                        Width="50"
-                        Height="70"
-                        Stroke="{Binding Source={StaticResource PrimaryHueMidBrush}}" 
-                        StrokeThickness="2"
-                        Fill="{Binding Source={StaticResource PrimaryHueLightBrush}}" />
-                </StackPanel>
-
-            </WrapPanel>
-
-
+-->
 
         </StackPanel>
     </ScrollViewer>
