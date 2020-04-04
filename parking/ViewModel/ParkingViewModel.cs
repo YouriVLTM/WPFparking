@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace parking.ViewModel
@@ -58,6 +59,8 @@ namespace parking.ViewModel
                         parkrow = new ParkPlaceRow();
                         parkrow.ParkPlace.Add(parkPlace);
                         parkrow.RowNumber = parkPlace.Row;
+                        parkrow.ParkingName = parkPlace.Parking.Name;
+
                         // lijst toevoegen
                         //park view
                         viewParkPlaces.Add(parkrow);
@@ -88,35 +91,6 @@ namespace parking.ViewModel
         }
 
 
-        private ICommand toevoegenCommand;
-        public ICommand ToevoegenCommand
-        {
-            get
-            {
-                return toevoegenCommand;
-            }
-
-            set
-            {
-                toevoegenCommand = value;
-            }
-        }
-
-        private ICommand wijzigenCommand;
-        public ICommand WijzigenCommand
-        {
-            get
-            {
-                return wijzigenCommand;
-            }
-
-            set
-            {
-                wijzigenCommand = value;
-            }
-        }
-
-
         private DialogService dialogService;
 
         public ParkingViewModel()
@@ -131,13 +105,26 @@ namespace parking.ViewModel
             dialogService = new DialogService();
 
             //koppelen commands
-            WijzigenCommand = new BaseCommand(WijzigenParkPlace);
-            ToevoegenCommand = new BaseCommand(ToevoegenParkPlace);
+            KoppelCommands();
 
             //luisteren naar messages vanuit detailvenster
-            Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
+            //Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
 
         }
+
+        private void KoppelCommands()
+        {
+            ViewCommand = new BaseParCommand(ViewParkPlaceDetail);
+        }
+
+
+        public ICommand ViewCommand { get; set; }
+
+        private void ViewParkPlaceDetail(object name)
+        {
+            ParkPlace park = selectedParkPlace;
+        }
+
 
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
@@ -151,27 +138,6 @@ namespace parking.ViewModel
                 parkPlaces = ds.GetParkPlace();
             }
 
-        }
-
-        private void ToevoegenParkPlace()
-        {
-
-            SelectedParkPlace = new ParkPlace();
-
-            Messenger.Default.Send<ParkPlace>(SelectedParkPlace);
-
-            dialogService.ShowDetailDialog();
-
-        }
-
-        private void WijzigenParkPlace()
-        {
-            if (SelectedParkPlace != null)
-            {
-                Messenger.Default.Send<ParkPlace>(SelectedParkPlace);
-
-                dialogService.ShowDetailDialog();
-            }
         }
 
 

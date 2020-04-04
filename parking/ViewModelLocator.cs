@@ -12,6 +12,15 @@ namespace parking
         private static ParkingViewModel parkingViewModel = new ParkingViewModel();
         private static ParkingDetailsViewModel parkingDetailsViewModel = new ParkingDetailsViewModel();
         private static MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+        private static ReserverenViewModel reserverenViewModel = new ReserverenViewModel();
+
+        public static ReserverenViewModel ReserverenViewModel
+        {
+            get
+            {
+                return reserverenViewModel;
+            }
+        }
 
         public static ParkingViewModel ParkingViewModel
         {

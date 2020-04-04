@@ -19,7 +19,7 @@ namespace parking.Model
         private DateTime endTime;
 
         private ParkPlace parkPlace;
-
+        private User user;
 
 
         public int Id
@@ -48,7 +48,7 @@ namespace parking.Model
             }
         }
 
-        public User user
+        public User User
         {
             get { return user; }
             set

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +7,11 @@ using System.Windows.Input;
 
 namespace parking.ViewModel
 {
-    public class BaseCommand : ICommand
+    class BaseParCommand : ICommand
     {
-        Action actie;
+        Action<object> actie;
 
-        public BaseCommand(Action Actie)
+        public BaseParCommand(Action<object> Actie)
         {
             actie = Actie;
         }
@@ -26,7 +25,7 @@ namespace parking.ViewModel
 
         public void Execute(object parameter)
         {
-            actie.Invoke();
+            actie.Invoke(parameter);
         }
     }
 }

@@ -98,6 +98,7 @@
     <Compile Include="Model\UserLectureDataService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
+    <Compile Include="ViewModel\BaseParCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Extensions\PageNavigationService.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

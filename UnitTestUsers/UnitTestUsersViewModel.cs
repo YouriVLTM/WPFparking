@@ -111,11 +111,26 @@ namespace UnitTestParking
         public void TestMethodSelectParkPlacesRow()
         {
             var viewmodel = new ParkingViewModel();
-            List<ParkPlaceRow> park = viewmodel.ViewParkPlaces;
+            List<ParkPlaceRow> park = viewmodel.RowViewParkPlaces;
             Assert.AreEqual(1, 1);
 
         }
 
 
     }
-}
+
+    [TestClass]
+    public class UnitTestReserverenViewModel
+    {
+        [TestMethod]
+        public void TestMethodGetNewParkPlaces()
+        {
+            Reservation reservation = new Reservation();
+
+            reservation.BeginTime = ''
+
+
+            Assert.AreEqual(1, 1);
+
+        }
+    }

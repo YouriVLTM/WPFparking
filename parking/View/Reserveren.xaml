@@ -41,30 +41,32 @@
                    
                         <TextBox
           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="Naam"
-          Text="{Binding Name}"
+          materialDesign:HintAssist.Hint="Prename"
+          Text="{Binding Reservation.User.Prename, Mode=TwoWay, ValidatesOnDataErrors=True}"
           Margin="8 0 0 0"
           VerticalAlignment="Bottom" />
 
+
                     <TextBox
           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="Nummerplaat"
-          Text="{Binding Name}"
+          materialDesign:HintAssist.Hint="LastName"
+          Text="{Binding Reservation.User.Lastname, Mode=TwoWay, ValidatesOnDataErrors=True}"
           Margin="8 0 0 0"
           VerticalAlignment="Bottom" />
+                    
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="0">
                     <TextBox
           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
           materialDesign:HintAssist.Hint="Email"
-          Text="{Binding Name}"
+          Text="{Binding Reservation.User.Email, Mode=TwoWay, ValidatesOnDataErrors=True}"
           Margin="8 0 0 0"
           VerticalAlignment="Bottom" />
                     <TextBox
           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
           materialDesign:HintAssist.Hint="GSM nummer"
-          Text="{Binding Name}"
+          Text="{Binding Reservation.User.PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True}"
           Margin="8 0 0 0"
           VerticalAlignment="Bottom" />
                 </StackPanel>
@@ -79,14 +81,22 @@
                     <TextBox
           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
           materialDesign:HintAssist.Hint="Locatie"
-          Text="{Binding Name}"
+          Text="{Binding Location, Mode=TwoWay, ValidatesOnDataErrors=True}"
           Margin="8 0 0 0"
           VerticalAlignment="Bottom" />
 
                     <materialDesign:TimePicker
                     Margin="10,0,0,0"
                     Is24Hours="True"
+                        Text="{Binding Reservation.Date , Mode=TwoWay, ValidatesOnDataErrors=True}"
+                     
+  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+  materialDesign:HintAssist.Hint="Date" />
 
+                    <materialDesign:TimePicker
+                    Margin="10,0,0,0"
+                    Is24Hours="True"
+                        Text="{Binding Reservation.BeginTime , Mode=TwoWay, ValidatesOnDataErrors=True}"
                      
   Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
   materialDesign:HintAssist.Hint="Uur" />
@@ -95,18 +105,11 @@
                 <StackPanel Grid.Column="1" Grid.Row="1">
                     <TextBlock Text="Verlaat" FontWeight="Bold" FontSize="19"  Margin="0,15,0,5"/>
 
-                    <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="Locatie"
-          Text="{Binding Name}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
                     
                     <materialDesign:TimePicker
                     Margin="10,0,0,0"
                     Is24Hours="True"
-
-                     
+                    Text="{Binding Reservation.EndTime, Mode=TwoWay, ValidatesOnDataErrors=True}"
   Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
   materialDesign:HintAssist.Hint="Uur" />
                 </StackPanel>
@@ -136,9 +139,10 @@
     Style="{StaticResource MaterialDesignRaisedButton}"
                 HorizontalAlignment="Left"
    Width="200"
-    ToolTip="Resource name: MaterialDesignRaisedButton">
-               Reserveren
-            </Button>
+                 Command="{Binding SaveReserverenCommand}"
+                CommandParameter="TEST"
+    ToolTip="Reserveren"
+                Content="Reserveren"/>
 
         </StackPanel>
     </ScrollViewer>

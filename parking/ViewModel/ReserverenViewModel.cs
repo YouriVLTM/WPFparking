@@ -1,4 +1,5 @@
-﻿using System;
+﻿using parking.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,52 @@ namespace parking.ViewModel
 {
     public class ReserverenViewModel : BaseViewModel
     {
+
+        
+
+        private String location;
+        public String Location
+        {
+            get
+            {
+                return location;
+            }
+            set
+            {
+                location = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Reservation reservation;
+        public Reservation Reservation
+        {
+            get
+            {
+                return reservation;
+            }
+            set
+            {
+                reservation = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         public ReserverenViewModel()
         {
+            //new reserveren
+            User user = new User();
+            ParkPlace parkPlace = new ParkPlace();
+            reservation = new Reservation();
+
+            Reservation.User = user;
+            Reservation.ParkPlace = parkPlace;
+
+
+
+
+            //Command Kopellen
             KoppelCommands();
         }
 
@@ -21,11 +66,12 @@ namespace parking.ViewModel
         }
 
 
-
         public ICommand ViewParkingPlaceCommand { get; set; }
 
         private void ViewParkingPlace()
         {
+            //kijken welke paringPlaats
+            ReservationDataService ds = new ReservationDataService();
 
         }
 
@@ -34,6 +80,8 @@ namespace parking.ViewModel
 
         private void SaveReserveren()
         {
+            //Be
+            Reservation test = Reservation;
 
         }
 

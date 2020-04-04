@@ -19,7 +19,7 @@ namespace parking.Model
         public ObservableCollection<ParkPlace> GetParkPlace()
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from ParkPlace pp JOIN Building bu ON pp.buildingId = bu.Id JOIN Parking pa ON pp.parkingId = pa.Id Order By row,cel";
+            string sql = "Select * from ParkPlace pp JOIN Building bu ON pp.buildingId = bu.Id JOIN Parking pa ON pp.parkingId = pa.Id Order By parkingId,row,cel";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen

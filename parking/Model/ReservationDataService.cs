@@ -28,6 +28,61 @@ namespace parking.Model
             return reservations;
         }
 
+
+        public ParkPlace GetNewParkPlaces(Reservation reservation, String location)
+        {
+            // Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select TOP 1 PERCENT pa.* from Reservation res" +
+                "RIGHT JOIN ParkPlace pa ON pa.id = res.parkPlaceId" +
+                "JOIN Building bu ON pa.buildingId = bu.Id" +
+                "Where" +
+                "bu.location ='" + location + "'"+
+                "AND" +
+                "(" +
+                "    res.beginTime NOT BETWEEN CONVERT(datetime, '"+ reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
+                "OR" +
+                "res.beginTime IS NULL" +
+                ")" +
+                "AND" +
+                "(" +
+                "res.endTime NOT BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
+                "OR" +
+                "res.endTime IS NULL" +
+                ")" +
+                "AND" +
+                "pa.Id NOT IN(" +
+                "Select pa.Id from Reservation res" +
+                "RIGHT JOIN ParkPlace pa ON pa.id = res.parkPlaceId" +
+                "JOIN Building bu ON pa.buildingId = bu.Id" +
+                "Where" +
+                "bu.location ='" + location + "'" +
+                "AND" +
+                "res.beginTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
+                "OR" +
+                "res.endTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
+                ")" +
+                "ORDER by res.Id";
+
+            //Uitvoeren SQL statement op db instance 
+            //Type casten van het generieke return type naar een collectie van contactpersonen
+
+            List<ParkPlace> parkPlaces = db.Query<ParkPlace>(sql).ToList();
+
+            ParkPlace parkplace;
+
+
+            if (parkPlaces.Count == 0)
+            {
+                parkplace = null;
+            }
+            else
+            {
+                parkplace = parkPlaces.First();
+            }
+
+            return parkplace;
+        }
+
         public void UpdateReservation(Reservation reservation)
         {
             // SQL statement update 
