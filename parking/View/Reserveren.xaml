@@ -85,53 +85,50 @@
           Margin="8 0 0 0"
           VerticalAlignment="Bottom" />
 
-                    <materialDesign:TimePicker
-                    Margin="10,0,0,0"
-                    Is24Hours="True"
-                        Text="{Binding Reservation.Date , Mode=TwoWay, ValidatesOnDataErrors=True}"
-                     
-  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-  materialDesign:HintAssist.Hint="Date" />
 
-                    <materialDesign:TimePicker
-                    Margin="10,0,0,0"
-                    Is24Hours="True"
-                        Text="{Binding Reservation.BeginTime , Mode=TwoWay, ValidatesOnDataErrors=True}"
-                     
-  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-  materialDesign:HintAssist.Hint="Uur" />
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="month/day/year Hours:min:sec"
+          Text="{Binding Reservation.BeginTime, ValidatesOnDataErrors=True}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
+                    
+                    
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1">
                     <TextBlock Text="Verlaat" FontWeight="Bold" FontSize="19"  Margin="0,15,0,5"/>
 
+
+                    <TextBox
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+          materialDesign:HintAssist.Hint="month/day/year Hours:min:sec"
+          Text="{Binding Reservation.EndTime, Mode=TwoWay, ValidatesOnDataErrors=True}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" />
                     
-                    <materialDesign:TimePicker
-                    Margin="10,0,0,0"
-                    Is24Hours="True"
-                    Text="{Binding Reservation.EndTime, Mode=TwoWay, ValidatesOnDataErrors=True}"
-  Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-  materialDesign:HintAssist.Hint="Uur" />
+                    
                 </StackPanel>
 
                
 
 
             </Grid>
-            
+
 
             <Button
     Style="{StaticResource MaterialDesignRaisedButton}"
                 HorizontalAlignment="Left"
    Width="200"
     ToolTip="Resource name: MaterialDesignRaisedButton"
-                Margin="0,0,0,30">
-               Parking plaats bekijken
-            </Button>
+                Margin="0,0,0,30"
+                Command="{Binding ViewParkingPlaceCommand}"
+                Content="Parking plaats bekijken"/>
+           
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
                 <TextBlock Text="Locatie" FontWeight="Bold" Padding="0,0,10,0"/>
-                <TextBlock Text="Locatie" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                <TextBlock Text="{Binding Reservation.ParkPlace.Id}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
             </StackPanel>
 
 
@@ -140,7 +137,6 @@
                 HorizontalAlignment="Left"
    Width="200"
                  Command="{Binding SaveReserverenCommand}"
-                CommandParameter="TEST"
     ToolTip="Reserveren"
                 Content="Reserveren"/>
 

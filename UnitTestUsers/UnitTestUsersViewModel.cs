@@ -46,7 +46,23 @@ namespace UnitTestParking
 
         }
 
+        [TestMethod]
+        public void TestMethodUserExist()
+        {
+            UserDataService db = new UserDataService();
+            User user = new User();
+            user.Email = "youri.vanlaer@hotmail.com";
+
+            User us = db.UserExist(user);
+            
+            Assert.AreEqual(1,us.Id);
+
+        }
+
+
         
+
+
     }
 
 
@@ -127,10 +143,18 @@ namespace UnitTestParking
         {
             Reservation reservation = new Reservation();
 
-            reservation.BeginTime = ''
+            ReservationDataService ds = new ReservationDataService();
+
+            reservation.BeginTime = DateTime.Parse("05/04/2020 11:50:00");
+            reservation.EndTime = DateTime.Parse("05/04/2020 12:50:00");
+            String location = "A202";
+
+            ParkPlace park = ds.GetNewParkPlaces(reservation, location);
 
 
-            Assert.AreEqual(1, 1);
+
+            Assert.AreEqual(9, park.Id);
 
         }
     }
+}

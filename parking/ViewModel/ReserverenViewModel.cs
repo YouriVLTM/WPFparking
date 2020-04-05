@@ -51,7 +51,8 @@ namespace parking.ViewModel
 
             Reservation.User = user;
             Reservation.ParkPlace = parkPlace;
-
+            Reservation.BeginTime = DateTime.Now;
+            Reservation.EndTime = DateTime.Now;
 
 
 
@@ -72,6 +73,17 @@ namespace parking.ViewModel
         {
             //kijken welke paringPlaats
             ReservationDataService ds = new ReservationDataService();
+            ParkPlace reservationPark = ds.GetNewParkPlaces(Reservation, Location);
+
+            if(reservation == null)
+            {
+                //geen parking gevonden
+
+            }
+            else
+            {
+                Reservation.ParkPlace = reservationPark;
+            }
 
         }
 
@@ -82,6 +94,25 @@ namespace parking.ViewModel
         {
             //Be
             Reservation test = Reservation;
+            Reservation.Status = "reserved";
+
+            //user already exist 
+            UserDataService dbUser = new UserDataService();
+
+            User us = dbUser.UserExist(Reservation.User);
+
+            if (us == null)
+            {
+                //creat New User
+                dbUser.InsertUser(Reservation.User);
+                us = dbUser.UserExist(Reservation.User);
+            }
+            Reservation.User = us;
+
+            //reservation
+            ReservationDataService dbReservation = new ReservationDataService();
+
+            dbReservation.InsertReservation(Reservation);
 
         }
 

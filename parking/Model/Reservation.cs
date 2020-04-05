@@ -14,7 +14,6 @@ namespace parking.Model
         private int userId;
         private int parkPlaceId;
         private string status;
-        private DateTime date;
         private DateTime beginTime;
         private DateTime endTime;
 
@@ -54,6 +53,7 @@ namespace parking.Model
             set
             {
                 user = value;
+                UserId = value.Id;
                 NotifyPropertyChanged();
             }
         }
@@ -77,6 +77,7 @@ namespace parking.Model
             set
             {
                 parkPlace = value;
+                ParkPlaceId = value.Id;
                 NotifyPropertyChanged();
             }
         }
@@ -95,18 +96,6 @@ namespace parking.Model
             }
         }
 
-        public DateTime Date
-        {
-            get
-            {
-                return date;
-            }
-            set
-            {
-                date = value;
-                NotifyPropertyChanged();
-            }
-        }
 
         public DateTime BeginTime
         {

@@ -34,6 +34,23 @@ namespace parking.Model
             return users;
         }
 
+        public User UserExist(User user)
+        {
+            string sql = "Select * From Userx where Email = @email";
+
+            // Uitvoeren SQL statement en doorgeven parametercollectie
+            List<User> us = db.Query<User>(sql, new { user.Email}).ToList();
+
+            if(us.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return us.First();
+            }
+        }
+
         public void UpdateUser(User user)
         {
             // SQL statement update 

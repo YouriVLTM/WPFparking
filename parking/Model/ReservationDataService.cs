@@ -32,35 +32,35 @@ namespace parking.Model
         public ParkPlace GetNewParkPlaces(Reservation reservation, String location)
         {
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select TOP 1 PERCENT pa.* from Reservation res" +
-                "RIGHT JOIN ParkPlace pa ON pa.id = res.parkPlaceId" +
-                "JOIN Building bu ON pa.buildingId = bu.Id" +
-                "Where" +
-                "bu.location ='" + location + "'"+
-                "AND" +
-                "(" +
-                "    res.beginTime NOT BETWEEN CONVERT(datetime, '"+ reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
-                "OR" +
-                "res.beginTime IS NULL" +
-                ")" +
-                "AND" +
-                "(" +
-                "res.endTime NOT BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
-                "OR" +
-                "res.endTime IS NULL" +
-                ")" +
-                "AND" +
-                "pa.Id NOT IN(" +
-                "Select pa.Id from Reservation res" +
-                "RIGHT JOIN ParkPlace pa ON pa.id = res.parkPlaceId" +
-                "JOIN Building bu ON pa.buildingId = bu.Id" +
-                "Where" +
-                "bu.location ='" + location + "'" +
-                "AND" +
-                "res.beginTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
-                "OR" +
-                "res.endTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "')" +
-                ")" +
+            string sql = "Select TOP 1 PERCENT pa.* from Reservation res " +
+                "RIGHT JOIN ParkPlace pa ON pa.id = res.parkPlaceId " +
+                "JOIN Building bu ON pa.buildingId = bu.Id " +
+                "Where " +
+                "bu.location ='" + location + "' "+
+                "AND " +
+                "( " +
+                "res.beginTime NOT BETWEEN CONVERT(datetime, '"+ reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "OR " +
+                "res.beginTime IS NULL " +
+                ") " +
+                "AND " +
+                "( " +
+                "res.endTime NOT BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "OR " +
+                "res.endTime IS NULL " +
+                ") " +
+                "AND " +
+                "pa.Id NOT IN( " +
+                "Select pa.Id from Reservation res " +
+                "RIGHT JOIN ParkPlace pa ON pa.id = res.parkPlaceId " +
+                "JOIN Building bu ON pa.buildingId = bu.Id " +
+                "Where " +
+                "bu.location ='" + location + "' " +
+                "AND " +
+                "res.beginTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "OR " +
+                "res.endTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                ") " +
                 "ORDER by res.Id";
 
             //Uitvoeren SQL statement op db instance 
@@ -86,10 +86,10 @@ namespace parking.Model
         public void UpdateReservation(Reservation reservation)
         {
             // SQL statement update 
-            string sql = "Update Reservation set userId=@userId, parkPlaceId=@parkPlaceId, status=@status, date=@date, beginTime=@beginTime, endTime=@endTime where Id = @id";
+            string sql = "Update Reservation set userId=@userId, parkPlaceId=@parkPlaceId, status=@status, beginTime=@beginTime, endTime=@endTime where Id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { reservation.UserId, reservation.ParkPlaceId, reservation.Status, reservation.Date, reservation.BeginTime, reservation.EndTime, reservation.Id });
+            db.Execute(sql, new { reservation.UserId, reservation.ParkPlaceId, reservation.Status, reservation.BeginTime, reservation.EndTime, reservation.Id });
         }
 
         public void DeletReservation(Reservation reservation)
@@ -104,10 +104,10 @@ namespace parking.Model
         public void InsertReservation(Reservation reservation)
         {
             // SQL statement Insert 
-            string sql = "Insert Reservation(userId,parkPlaceId,status,date,beginTime,endTime) values(@userId,@parkPlaceId,@status,@date,@beginTime,@endTime)";
+            string sql = "Insert Reservation(userId,parkPlaceId,status,beginTime,endTime) values(@userId,@parkPlaceId,@status,@beginTime,@endTime)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { reservation.UserId, reservation.ParkPlaceId, reservation.Status, reservation.Date, reservation.BeginTime, reservation.EndTime });
+            db.Execute(sql, new { reservation.UserId, reservation.ParkPlaceId, reservation.Status, reservation.BeginTime, reservation.EndTime });
         }
     }
 }

@@ -123,6 +123,8 @@ namespace parking.ViewModel
         private void ViewParkPlaceDetail(object name)
         {
             ParkPlace park = selectedParkPlace;
+
+
         }
 
 
