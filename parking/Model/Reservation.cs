@@ -123,6 +123,11 @@ namespace parking.Model
             }
         }
 
+        public Boolean IsBeginTimeFutur()
+        {
+            return true;
+        }
+
 
 
     }

@@ -50,7 +50,16 @@ namespace parking.ViewModel
 
         private void OnParkPlaceReceived(ParkPlace parkplace)
         {
-            SelectedParkPlace = parkplace;
+            if(parkplace.Building == null || parkplace.Parking == null)
+            {
+                ParkPlaceDataService dbParkPlace = new ParkPlaceDataService();
+                SelectedParkPlace = dbParkPlace.GetParkPlaceWithFK(parkplace);
+
+            }
+            else
+            {
+                SelectedParkPlace = parkplace;
+            }
 
             // get reservations         
 

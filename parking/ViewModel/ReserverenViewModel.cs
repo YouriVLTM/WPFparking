@@ -1,4 +1,5 @@
-﻿using parking.Model;
+﻿using parking.Extensions;
+using parking.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,8 @@ namespace parking.ViewModel
         }
 
 
+        private DialogService dialogService;
+
         public ReserverenViewModel()
         {
             //new reserveren
@@ -55,6 +58,8 @@ namespace parking.ViewModel
             Reservation.EndTime = DateTime.Now;
 
 
+            //instantiëren DialogService als singleton
+            dialogService = new DialogService();
 
             //Command Kopellen
             KoppelCommands();
@@ -63,13 +68,26 @@ namespace parking.ViewModel
         private void KoppelCommands()
         {
             SaveReserverenCommand = new BaseCommand(SaveReserveren);
-            ViewParkingPlaceCommand = new BaseCommand(ViewParkingPlace);
+            GetParkingPlaceCommand = new BaseCommand(GetParkingPlace);
+            ViewParkingPlaceCommand = new BaseParCommand(ViewParkingPlace);
         }
 
 
         public ICommand ViewParkingPlaceCommand { get; set; }
+        private void ViewParkingPlace(object parkplace)
+        {
+            if (parkplace != null)
+            {
+                Messenger.Default.Send<ParkPlace>((ParkPlace)parkplace);
 
-        private void ViewParkingPlace()
+                dialogService.ShowDetailDialogParkPlace();
+            }
+        }
+
+
+        public ICommand GetParkingPlaceCommand { get; set; }
+
+        private void GetParkingPlace()
         {
             //kijken welke paringPlaats
             ReservationDataService ds = new ReservationDataService();

@@ -82,6 +82,15 @@ namespace parking.Model
             }
         }
 
+        private String fullName;
+        public String FullName 
+        { 
+            get
+            {
+                return Lastname + " " + Prename;
+            } 
+        }
+
         public string Error
         {
             get

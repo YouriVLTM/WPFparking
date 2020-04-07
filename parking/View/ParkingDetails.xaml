@@ -63,12 +63,19 @@
 
             <TextBlock Text="Reservaties" FontWeight="Bold" FontSize="19"/>
 
-            <ListView ItemsSource="{Binding Reservations}">
+            <ListView Name="ReservationList" ItemsSource="{Binding Reservations}">
+
+
+                <!--<DataTrigger Binding="{Binding ElementName=ReservationList, Path=DataContext.IsBeginTimeFutur}" Value="true">
+                    <Setter Property="Ba" Value="Green" />
+                </DataTrigger>-->
+
                 <ListView.View>
                     <GridView>
                         <GridViewColumn
-                            DisplayMemberBinding="{Binding UserId}"
-                            Header="UserId" />
+                            DisplayMemberBinding="{Binding User.FullName}"
+                            Header="Name"                            
+                            />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding Status}"
                             Header="Status" />
@@ -76,12 +83,10 @@
                             DisplayMemberBinding="{Binding BeginTime}"
                             Header="Begin" />
                         <GridViewColumn
-                            DisplayMemberBinding="{Binding endTime}"
+                            DisplayMemberBinding="{Binding EndTime}"
                             Header="End" />
-
-
-
                     </GridView>
+                   
                 </ListView.View>
             </ListView>
 

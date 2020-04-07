@@ -122,13 +122,31 @@
    Width="200"
     ToolTip="Resource name: MaterialDesignRaisedButton"
                 Margin="0,0,0,30"
-                Command="{Binding ViewParkingPlaceCommand}"
+                Command="{Binding GetParkingPlaceCommand}"
                 Content="Parking plaats bekijken"/>
            
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
                 <TextBlock Text="Locatie" FontWeight="Bold" Padding="0,0,10,0"/>
-                <TextBlock Text="{Binding Reservation.ParkPlace.Id}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                <TextBlock x:Name="txt_parkplace" Text="{Binding Reservation.ParkPlace.Id}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+
+                <Button
+                    Margin="0,0,0,30"
+                    Command="{Binding ViewParkingPlaceCommand}"
+                    CommandParameter="{Binding Reservation.ParkPlace}"
+                    Content="View Parkplace">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=txt_parkplace, Path=Text}" Value="0">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>                        
+                    </Button.Style>
+                    
+                </Button>
+                
             </StackPanel>
 
 
