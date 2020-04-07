@@ -20,15 +20,37 @@
         Title="MainWindow" Height="800" Width="1024"
         >
 
+    <Window.Resources>
+        <Style TargetType="materialDesign:PackIcon" x:Key="icon">
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="{StaticResource SecondaryMidBrush}"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="buttonNav" BasedOn="{StaticResource MaterialDesignFlatButton}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="130"/>
+            
+            <!--<Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>-->
+        </Style>
+    </Window.Resources>
+
 
     <Grid>
-        <Grid x:Name="extendedTitleBar" Height="30" VerticalAlignment="Top" Background="{Binding Source={StaticResource PrimaryHueLightBrush}}">
-            <TextBlock Text="Parking" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Source={StaticResource PrimaryHueLightForegroundBrush}}" FontSize="22"/>
+        <Grid x:Name="extendedTitleBar" Height="30" VerticalAlignment="Top" Background="{Binding Source={StaticResource SecondaryLightBrush}}">
+            <TextBlock Text="Parking" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Source={StaticResource SecondaryLightForegroundBrush}}" FontSize="22"/>
         </Grid>
         <Grid Width="200" HorizontalAlignment="Left" 
               Background="White" materialDesign:ShadowAssist.ShadowDepth="Depth5">
             <StackPanel>
-                <Grid Height="150"  Background="{Binding Source={StaticResource PrimaryHueMidBrush}}">
+                <Grid Height="150" Background="{Binding Source={StaticResource SecondaryMidBrush}}">
                     <StackPanel Margin="0,15,0,0">
                         <Ellipse HorizontalAlignment="Center" Height="100" Width="100" >
                             <Ellipse.Fill>
@@ -42,26 +64,26 @@
 
                     <ListViewItem x:Name="ItemHome" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HomeOutline" Height="25" Width="25" Margin="10"/>
-                            <Button Content="Home" Command="{Binding HomeCommand }" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="HomeOutline" Style="{StaticResource icon}"/>
+                            <Button Content="Home" Command="{Binding HomeCommand }" Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CarPark" Height="25" Width="25" Margin="10"/>
-                            <Button Content="Parking" Command="{Binding ParkingCommand }" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="CarPark" Style="{StaticResource icon}"/>
+                            <Button Content="Parking" Command="{Binding ParkingCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AlarmClockSnooze" Height="25" Width="25" Margin="10"/>
-                            <Button Content="Reserveren" Command="{Binding ReserverenCommand }" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="AlarmClockSnooze"  Style="{StaticResource icon}"/>
+                            <Button Content="Reserveren" Command="{Binding ReserverenCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ChartBar" Height="25" Width="25" Margin="10"/>
-                            <Button Content="Statistiek" Command="{Binding StatistiekCommand }" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="ChartBar"  Style="{StaticResource icon}"/>
+                            <Button Content="Statistiek" Command="{Binding StatistiekCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

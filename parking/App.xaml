@@ -10,14 +10,20 @@
         <ResourceDictionary>
             <local:ViewModelLocator x:Key="mainViewModelLocator" />
             <!-- primary -->
-            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#a4a4a4"/>
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#6abf69"/>
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#757575"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#388e3c"/>
             <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#494949"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00600F"/>
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF"/>
             <!-- accent -->
-            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#5c6bc0"/>
+            <SolidColorBrush x:Key="SecondaryLightBrush" Color="#a4a4a4"/>
+            <SolidColorBrush x:Key="SecondaryLightForegroundBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="SecondaryMidBrush" Color="#757575"/>
+            <SolidColorBrush x:Key="SecondaryMidForegroundBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="SecondaryDarkBrush" Color="#494949"/>
+            <SolidColorBrush x:Key="SecondaryDarkForegroundBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#a4a4a4"/>
             <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
 
             <ResourceDictionary.MergedDictionaries>
