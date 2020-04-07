@@ -188,8 +188,32 @@ namespace UnitTestParking
 
         }
 
+        [TestMethod]
+        public void TestMethodGetMostReservedParkingPlace()
+        {
+            ReservationDataService ds = new ReservationDataService();
 
+            ParkPlace parkplace = ds.GetMostReservedParkingPlace();
+
+            Assert.AreEqual(4,4);
+
+        }
+
+        [TestMethod]
+        public void TestMethodGetCountReservationEveryDay()
+        {
+            ReservationDataService ds = new ReservationDataService();
+            List< Graph<string, int> > test = ds.GetCountReservationEveryDay();
+            Assert.AreEqual(4, 4);
+
+        }
 
         
+
+
+
+
+
+
     }
 }

@@ -28,6 +28,61 @@ namespace parking.Model
             return reservations;
         }
 
+        public ParkPlace GetMostReservedParkingPlace()
+        {
+            string sql = "Select * " +
+                "From ParkPlace pp " +
+                "JOIN Parking pa ON pa.Id = pp.parkingId " +
+                "JOIN Building bu ON bu.Id = pp.buildingId " +
+                "WHERE pp.Id = ( " +
+                    "Select TOP 1 re.parkPlaceId " +
+                    "From Reservation re " +
+                    "GROUP BY re.parkPlaceId " +
+                    "ORDER BY Count(parkPlaceId) DESC " +
+                 ")";
+
+
+            var park= db.Query<ParkPlace,Parking,Building,ParkPlace>(sql,(parkPlace, parking, building) =>
+            {
+                parkPlace.Parking = parking;
+                parkPlace.Building = building;
+                return parkPlace;
+            },
+            splitOn: "Id").First();
+
+            return park;
+        }
+
+
+        public User GetMostReservedUser()
+        {
+            string sql = "Select * From Userx u " +
+                "where u.Id = ( " +
+                    "Select TOP 1 re.userId " +
+                    "From Reservation re " +
+                    "GROUP BY re.userId " +
+                    "ORDER BY Count(userId) DESC " +
+                ")";
+
+
+           User user = db.Query<User>(sql).First();
+
+            return user;
+        }
+
+        public List<Graph<string,int>> GetCountReservationEveryDay()
+        {
+            string sql = "set datefirst 1;" +
+                "Select DATENAME(WEEKDAY, re.beginTime) as xvalue, count(*) as yvalue from Reservation re " +
+                "GROUP BY DATENAME(WEEKDAY, re.beginTime),DATEPART(WEEKDAY, re.beginTime) " +
+                "ORDER BY DATEPART(WEEKDAY, re.beginTime)";
+
+            var result = db.Query<Graph<string,int>>(sql).ToList();
+
+            return result;
+
+        }        
+
         public ObservableCollection<Reservation> GetReservationParkPlace(ParkPlace parkPlace)
         {
             // Uitschrijven SQL statement & bewaren in een string. 

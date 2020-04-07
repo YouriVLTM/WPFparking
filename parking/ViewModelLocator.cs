@@ -13,6 +13,15 @@ namespace parking
         private static ParkingDetailsViewModel parkingDetailsViewModel = new ParkingDetailsViewModel();
         private static MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
         private static ReserverenViewModel reserverenViewModel = new ReserverenViewModel();
+        private static StatistiekViewModel statistiekViewModel = new StatistiekViewModel();
+
+        public static StatistiekViewModel StatistiekViewModel
+        {
+            get
+            {
+                return statistiekViewModel;
+            }
+        }
 
         public static ReserverenViewModel ReserverenViewModel
         {

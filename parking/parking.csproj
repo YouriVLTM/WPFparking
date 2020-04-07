@@ -83,6 +83,7 @@
     <Compile Include="Model\BaseModelDataService.cs" />
     <Compile Include="Model\Building.cs" />
     <Compile Include="Model\BuildingDataService.cs" />
+    <Compile Include="Model\Graph.cs" />
     <Compile Include="Model\Lecture.cs" />
     <Compile Include="Model\LectureDataService.cs" />
     <Compile Include="Model\Parking.cs" />
