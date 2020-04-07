@@ -8,11 +8,11 @@ using System.Windows.Input;
 
 namespace parking.ViewModel
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : BaseViewModel
     {
 
         public MainWindowViewModel()
-        {
+        {            
             ParkingCommand = new BaseCommand(GoToParkingPage);
             HomeCommand = new BaseCommand(GoToHomePage);
             ReserverenCommand = new BaseCommand(GoToReserverenCommand);
@@ -20,62 +20,7 @@ namespace parking.ViewModel
 
         }
 
-        private ICommand statistiekCommand;
-        public ICommand StatistiekCommand
-        {
-            get
-            {
-                return statistiekCommand;
-            }
-
-            set
-            {
-                statistiekCommand = value;
-            }
-        }
-
-        private ICommand parkingCommand;
-        public ICommand ParkingCommand
-        {
-            get
-            {
-                return parkingCommand;
-            }
-
-            set
-            {
-                parkingCommand = value;
-            }
-        }
-
-        private ICommand homeCommand;
-        public ICommand HomeCommand
-        {
-            get
-            {
-                return homeCommand;
-            }
-
-            set
-            {
-                homeCommand = value;
-            }
-        }
-
-        private ICommand reserverenCommand;
-        public ICommand ReserverenCommand
-        {
-            get
-            {
-                return reserverenCommand;
-            }
-
-            set
-            {
-                reserverenCommand = value;
-            }
-        }
-
+        public ICommand ParkingCommand { get; set; }
         private void GoToParkingPage()
         {
             PageNavigationService nav = new PageNavigationService();
@@ -83,18 +28,22 @@ namespace parking.ViewModel
 
         }
 
+        public ICommand HomeCommand { get; set; }
         private void GoToHomePage()
         {
             PageNavigationService nav = new PageNavigationService();
             nav.Navigate("Home");
         }
 
+        public ICommand ReserverenCommand { get; set; }
         private void GoToReserverenCommand()
         {
             PageNavigationService nav = new PageNavigationService();
             nav.Navigate("Reserveren");
         }
 
+
+        public ICommand StatistiekCommand { get; set; }
         private void GoToStatistiekCommand()
         {
             PageNavigationService nav = new PageNavigationService();

@@ -28,6 +28,20 @@ namespace parking.Model
             return reservations;
         }
 
+        public ObservableCollection<Reservation> GetReservationParkPlace(ParkPlace parkPlace)
+        {
+            // Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select * From Reservation " +
+                "Where parkPlaceId = @id " +
+                "ORDER BY beginTime DESC";
+
+            //Uitvoeren SQL statement op db instance 
+            //Type casten van het generieke return type naar een collectie van contactpersonen
+            ObservableCollection<Reservation> reservations = db.Query<Reservation>(sql, new { parkPlace.Id }).ToObservableCollection();
+
+            return reservations;
+        }
+
 
         public ParkPlace GetNewParkPlaces(Reservation reservation, String location)
         {

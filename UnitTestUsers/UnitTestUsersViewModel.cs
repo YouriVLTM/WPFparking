@@ -156,5 +156,24 @@ namespace UnitTestParking
             Assert.AreEqual(9, park.Id);
 
         }
+
+        [TestMethod]
+        public void TestMethodGetReservationParkPlace()
+        {
+            ParkPlace parkplace = new ParkPlace();
+            parkplace.Id = 2;
+
+            ReservationDataService ds = new ReservationDataService();
+
+
+            ObservableCollection<Reservation> reservations = ds.GetReservationParkPlace(parkplace);
+
+            Assert.AreEqual(4, reservations.Count);
+
+        }
+
+
+
+        
     }
 }

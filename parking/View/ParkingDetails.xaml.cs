@@ -18,7 +18,7 @@ namespace parking.View
     /// <summary>
     /// Interaction logic for ParkingDetails.xaml
     /// </summary>
-    public partial class ParkingDetails : Page
+    public partial class ParkingDetails : Window
     {
         public ParkingDetails()
         {

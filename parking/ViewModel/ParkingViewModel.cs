@@ -120,9 +120,14 @@ namespace parking.ViewModel
 
         public ICommand ViewCommand { get; set; }
 
-        private void ViewParkPlaceDetail(object name)
+        private void ViewParkPlaceDetail(object park)
         {
-            ParkPlace park = selectedParkPlace;
+            if(park != null)
+            {
+                Messenger.Default.Send<ParkPlace>((ParkPlace)park);
+
+                dialogService.ShowDetailDialogParkPlace();
+            }
 
 
         }
@@ -131,7 +136,7 @@ namespace parking.ViewModel
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
             //na update of delete mag detailvenster sluiten
-            dialogService.CloseDetailDialog();
+            dialogService.CloseDetailDialogParkPlace();
 
             //na Delete/Insert moet collectie Koffies terug ingeladen worden
             if (message.Type != UpdateFinishedMessage.MessageType.Updated)

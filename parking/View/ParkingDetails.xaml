@@ -1,4 +1,4 @@
-﻿<Page x:Class="parking.View.ParkingDetails"
+﻿<Window x:Class="parking.View.ParkingDetails"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,6 +14,9 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"  
+        
+        DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=ParkingDetailsViewModel}"
+        
       Title="ParkingDetails">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -29,36 +32,61 @@
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Parking Info" FontWeight="Bold" FontSize="19"  Margin="0,0,0,10"/>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Locatie" FontWeight="Bold" Padding="0,0,10,0"/>
-                        <TextBlock Text="Locatie" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                        <TextBlock Text="Parking" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="{Binding SelectedParkPlace.Parking.Name}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Afmeting" FontWeight="Bold" Padding="0,0,10,0"/>
-                        <TextBlock Text="Locatie" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                        <TextBlock Text="Row" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="{Binding SelectedParkPlace.Row}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Beschrijving" FontWeight="Bold" Padding="0,0,10,0"/>
-                        <TextBlock Text="Locatie" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                        <TextBlock Text="Cel" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="{Binding SelectedParkPlace.Cel}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Description" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="{Binding SelectedParkPlace.Description}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <TextBlock Text="Dichtsbijzijnd gebouw" FontWeight="Bold" FontSize="19" Margin="0,0,0,10"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Gebouw" FontWeight="Bold" Padding="0,0,10,0"/>
-                        <TextBlock Text="Locatie" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                        <TextBlock Text="{Binding SelectedParkPlace.Building.Place}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Close Location" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="{Binding SelectedParkPlace.Building.Location}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
 
             <TextBlock Text="Reservaties" FontWeight="Bold" FontSize="19"/>
-            <DataGrid
-  Margin="0 8 0 0"
-  ItemsSource="{Binding Items3}"
-  CanUserSortColumns="True"
-  CanUserAddRows="False" />
-            
-            
+
+            <ListView ItemsSource="{Binding Reservations}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding UserId}"
+                            Header="UserId" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Status}"
+                            Header="Status" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding BeginTime}"
+                            Header="Begin" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding endTime}"
+                            Header="End" />
+
+
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
         </StackPanel> 
         
     </ScrollViewer>
-</Page>
+</Window>

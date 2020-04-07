@@ -14,16 +14,26 @@ namespace parking.Extensions
 
         public DialogService() { }
 
+        public void ShowDetailDialogParkPlace()
+        {
+            parkingDetailView = new ParkingDetails();
+            parkingDetailView.ShowDialog();
+        }
+
+        public void CloseDetailDialogParkPlace()
+        {
+            if (parkingDetailView != null)
+                parkingDetailView.Close();
+        }
+
         public void ShowDetailDialog()
         {
-            parkingDetailView = new MainWindow();
-            parkingDetailView.ShowDialog();
+
         }
 
         public void CloseDetailDialog()
         {
-            if (parkingDetailView != null)
-                parkingDetailView.Close();
+
         }
     }
 }
