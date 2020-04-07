@@ -198,6 +198,7 @@
     <Resource Include="Assert\carPark.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assert\car.png" />
     <Content Include="data\parking.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

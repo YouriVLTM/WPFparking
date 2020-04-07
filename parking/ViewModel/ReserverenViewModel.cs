@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace parking.ViewModel
@@ -93,9 +94,10 @@ namespace parking.ViewModel
             ReservationDataService ds = new ReservationDataService();
             ParkPlace reservationPark = ds.GetNewParkPlaces(Reservation, Location);
 
-            if(reservation == null)
+            if(reservationPark == null)
             {
                 //geen parking gevonden
+                MessageBox.Show("Geen parkingplaatsen gevonden!");
 
             }
             else

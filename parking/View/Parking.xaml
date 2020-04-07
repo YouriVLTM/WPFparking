@@ -26,6 +26,7 @@
         
         <DataTemplate x:Key="rijItemTemplate">
             <StackPanel Orientation="Vertical">
+                
                 <StackPanel x:Name="groenblok">
 
                     <Separator              
@@ -50,23 +51,31 @@
                         <DataTemplate>
                             <Border
                                 Width="70"
-                                Height="90"
-								BorderBrush="{Binding Source={StaticResource PrimaryHueMidBrush}}"   
-                                Background="{Binding Source={StaticResource PrimaryHueLightBrush}}"
+                                Height="110"
+								BorderBrush="{Binding Source={StaticResource SecondaryMidBrush}}"   
+                                Background="{Binding Source={StaticResource SecondaryLightBrush}}"
 								BorderThickness="2"
                                 Margin="5,5,5,5">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="{Binding Cel}"/>
+                                    <Image x:Name="carImage" Source="/Assert/car.png" Height="60"/>
                                     <Button Content="View" Command="{Binding ElementName=topwindow,
-												Path=DataContext.ViewCommand}" CommandParameter="{Binding}" />                                    
+												Path=DataContext.ViewCommand}" CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignOutlinedButton}"/>
                                 </StackPanel>
-                               
+
                             </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                    <Setter TargetName="carImage" Property="Visibility"  Value="Hidden"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
                         </DataTemplate>
+
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" MaxHeight="200"/>
+                            <WrapPanel Orientation="Vertical" MaxHeight="250"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
@@ -75,6 +84,7 @@
                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
                     <Setter Property="Visibility" TargetName="groenblok" Value="Collapsed"/>
                 </DataTrigger>
+                
             </DataTemplate.Triggers>
         </DataTemplate>
         
