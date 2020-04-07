@@ -107,7 +107,9 @@ namespace parking.Model
                 switch (columnName)
                 {
                     case "Prename": if (string.IsNullOrEmpty(Prename)) result = "Prename moet ingevuld zijn!"; break;
-                    case "lastname": if (string.IsNullOrEmpty(Lastname)) result = "Prijs moet een positief getal zijn."; break;
+                    case "Lastname": if (string.IsNullOrEmpty(Lastname)) result = "Lastname moet ingevuld zijn!"; break;
+                    case "Email": if (string.IsNullOrEmpty(Email)) result = "Email moet ingevuld zijn!"; break;
+                    case "PhoneNumber": if (string.IsNullOrEmpty(PhoneNumber)) result = "PhoneNumber moet ingevuld zijn!"; break;
                 };
                 return result;
 

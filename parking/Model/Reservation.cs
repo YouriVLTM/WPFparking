@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    public class Reservation : BaseModel
+    public class Reservation : BaseModel, IDataErrorInfo
     {
         private int id;
         private int userId;
@@ -123,9 +123,28 @@ namespace parking.Model
             }
         }
 
-        public Boolean IsBeginTimeFutur()
+        public string Error
         {
-            return true;
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = string.Empty;
+                switch (columnName)
+                {
+                    case "BeginTime": if (DateTime.Now > (BeginTime)) result = "BeginTime moet later zijn!"; break;
+                    case "EndTime": if (DateTime.Now > (EndTime) || endTime == beginTime) result = "EndTime moet later zijn!"; break;
+                    case "ParkPlaceId": if ( (ParkPlaceId) == null || (ParkPlaceId) == 0) result = "ParkPlace moet geselecteed worden!"; break;
+                };
+                return result;
+
+            }
         }
 
 

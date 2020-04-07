@@ -8,10 +8,10 @@
       
       DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=ReserverenViewModel}"
       
-      
       d:DesignHeight="450" d:DesignWidth="800"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
@@ -19,6 +19,64 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"  
       Title="Reserveren">
+
+
+    <Page.Resources>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="Margin" Value="8 0 0 0"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="buttonGetParkPlace" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+            <Setter Property="Margin" Value="0,0,0,30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="200"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=txt_location, Path=Text}" Value="">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="buttonViewParPlace" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=txt_parkplace, Path=Text}" Value="0">
+                    <Setter Property="Visibility" Value="Hidden"/>                   
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="buttonReservation" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
+            <Setter Property="Margin" Value="0,0,0,30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="200"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=txt_email, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=txt_beginTime, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=txt_endTime, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=txt_parkplace, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+
+                
+            </Style.Triggers>
+        </Style>
+
+
+    </Page.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
@@ -36,39 +94,27 @@
                     <RowDefinition />
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0">                   
-                    
-                   
-                        <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="Prename"
-          Text="{Binding Reservation.User.Prename, Mode=TwoWay, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
-
-
+                <StackPanel Grid.Column="0" Grid.Row="0">
                     <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="LastName"
-          Text="{Binding Reservation.User.Lastname, Mode=TwoWay, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
-                    
+                          materialDesign:HintAssist.Hint="Prename"
+                          Text="{Binding Reservation.User.Prename, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                         />
+                    <TextBox
+                      materialDesign:HintAssist.Hint="LastName"
+                      Text="{Binding Reservation.User.Lastname, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                    />                    
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="0">
                     <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="Email"
-          Text="{Binding Reservation.User.Email, Mode=TwoWay, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
+                      Name="txt_email"
+                      materialDesign:HintAssist.Hint="Email"
+                      Text="{Binding Reservation.User.Email, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                        />
                     <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="GSM nummer"
-          Text="{Binding Reservation.User.PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
+                      materialDesign:HintAssist.Hint="GSM nummer"
+                      Text="{Binding Reservation.User.PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                        />
                 </StackPanel>
 
 
@@ -76,86 +122,60 @@
                 <StackPanel Grid.Column="0" Grid.Row="1">
 
                     <TextBlock Text="Start" FontWeight="Bold" FontSize="19"  Margin="0,15,0,5"/>
+                    <TextBox
+                        Name="txt_location"
+                      materialDesign:HintAssist.Hint="Locatie"
+                      Text="{Binding Location}"
+                        />
 
 
                     <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="Locatie"
-          Text="{Binding Location, Mode=TwoWay, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
-
-
-                    <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="month/day/year Hours:min:sec"
-          Text="{Binding Reservation.BeginTime, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
+                         Name="txt_beginTime"
+                      materialDesign:HintAssist.Hint="month/day/year Hours:min:sec"
+                      Text="{Binding Reservation.BeginTime, Mode=TwoWay,ValidatesOnDataErrors=True}" 
+                        />
                     
                     
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1">
                     <TextBlock Text="Verlaat" FontWeight="Bold" FontSize="19"  Margin="0,15,0,5"/>
-
-
                     <TextBox
-          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-          materialDesign:HintAssist.Hint="month/day/year Hours:min:sec"
-          Text="{Binding Reservation.EndTime, Mode=TwoWay, ValidatesOnDataErrors=True}"
-          Margin="8 0 0 0"
-          VerticalAlignment="Bottom" />
-                    
+                         Name="txt_endTime"
+                      materialDesign:HintAssist.Hint="month/day/year Hours:min:sec"
+                      Text="{Binding Reservation.EndTime, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                        />                   
                     
                 </StackPanel>
-
-               
 
 
             </Grid>
 
 
             <Button
-    Style="{StaticResource MaterialDesignRaisedButton}"
-                HorizontalAlignment="Left"
-   Width="200"
-    ToolTip="Resource name: MaterialDesignRaisedButton"
-                Margin="0,0,0,30"
+                Style="{StaticResource buttonGetParkPlace}"                
                 Command="{Binding GetParkingPlaceCommand}"
                 Content="Parking plaats bekijken"/>
            
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
-                <TextBlock Text="Locatie" FontWeight="Bold" Padding="0,0,10,0"/>
-                <TextBlock x:Name="txt_parkplace" Text="{Binding Reservation.ParkPlace.Id}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
+                <TextBlock Text="Park place" FontWeight="Bold" Padding="0,0,10,0"/>
+                <TextBlock x:Name="txt_parkplace" Text="{Binding Reservation.ParkPlaceId, Mode=TwoWay, ValidatesOnDataErrors=True}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
 
                 <Button
-                    Margin="0,0,0,30"
+                    Style="{StaticResource buttonViewParPlace}"
                     Command="{Binding ViewParkingPlaceCommand}"
                     CommandParameter="{Binding Reservation.ParkPlace}"
-                    Content="View Parkplace">
-                    <Button.Style>
-                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=txt_parkplace, Path=Text}" Value="0">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>                        
-                    </Button.Style>
-                    
-                </Button>
-                
+                    Content="View Parkplace"
+                    />
+
             </StackPanel>
 
 
             <Button
-    Style="{StaticResource MaterialDesignRaisedButton}"
-                HorizontalAlignment="Left"
-   Width="200"
-                 Command="{Binding SaveReserverenCommand}"
-    ToolTip="Reserveren"
+                Style="{StaticResource buttonReservation}"
+                Command="{Binding SaveReserverenCommand}"
+                ToolTip="Reserveren"
                 Content="Reserveren"/>
 
         </StackPanel>

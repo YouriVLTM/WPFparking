@@ -10,6 +10,7 @@ namespace parking.Model
 {
     public class BaseModel : INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

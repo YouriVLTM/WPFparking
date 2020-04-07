@@ -18,6 +18,7 @@
         DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=ParkingDetailsViewModel}"
         
       Title="ParkingDetails">
+   
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
