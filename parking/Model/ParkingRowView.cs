@@ -9,11 +9,14 @@ namespace parking.Model
 {
     public class ParkingRowView :BaseModel
     {
+        public ParkingRowView()
+        {
+            Row = new ObservableCollection<ParkPlaceView>();
+        }
 
         public int RowNumber { get; set; }
 
-        public ObservableCollection<ParkPlaceView> Rows { get; set; }
+        public ObservableCollection<ParkPlaceView> Row { get; set; }
 
-        public Parking Parking { get; set; }
     }
 }

@@ -147,8 +147,21 @@ namespace UnitTestParking
         }
 
 
+        [TestMethod]
+        public void TestMethodGetParkingsView()
+        {
+            ParkPlaceDataService ds = new ParkPlaceDataService();
+            ParkingsView test = ds.GetParkingsView();
+            Assert.AreEqual(4, 4);
+        }
+
+
 
         
+
+
+
+
 
 
     }
@@ -212,7 +225,7 @@ namespace UnitTestParking
         public void TestMethodGetParkingView()
         {
             ReservationDataService ds = new ReservationDataService();
-            ObservableCollection<ParkingView> test = ds.GetParkingView();
+            ParkingsView test = ds.GetParkingsView();
             Assert.AreEqual(4, 4);
 
         }

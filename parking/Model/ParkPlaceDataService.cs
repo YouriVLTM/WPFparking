@@ -15,6 +15,82 @@ namespace parking.Model
     public class ParkPlaceDataService : BaseModelDataService
     {
 
+        public ParkingsView GetParkingsView()
+        {
+            string sql = "Select * From ParkPlace pa " +
+                "JOIN Parking pr ON pr.Id = pa.parkingId " +
+                "JOIN Building bu ON bu.Id = pa.buildingId";
+
+            var park = db.Query<ParkPlace, Parking, Building, ParkPlace > (sql, (parkPlace, parking, building) =>
+            {
+                parkPlace.Parking = parking;
+                parkPlace.Building = building;
+
+                return parkPlace;
+            },
+           splitOn: "Id").ToObservableCollection();
+
+            // all parkings
+            ObservableCollection<Parking> parkings = park.GroupBy(x => x.Parking.Id)
+                .Select(y => y.FirstOrDefault().Parking)
+                .ToObservableCollection();
+
+            //new
+            ParkingsView parkingsview = new ParkingsView();
+            ParkingView parkingView;
+            ObservableCollection<int> parkingRows;
+            ParkingRowView parkingRowView;
+            ObservableCollection<ParkPlace> parkingRow;
+            ParkPlaceView parkPlaceView;
+
+            // voeg parings toe
+            foreach (Parking parking in parkings)
+            {
+                //new parking 
+                parkingView = new ParkingView();
+                parkingView.Parking = parking;
+                parkingsview.Parkings.Add(parkingView);
+
+                //parkplace rows
+                parkingRows = park.Where(T => T.ParkingId == parking.Id)
+                   .GroupBy(x => x.Row)
+                   .Select(y => y.FirstOrDefault().Row)
+                   .ToObservableCollection();
+
+                foreach (int rowNumber in parkingRows)
+                {
+                    //add Parking rows 
+                    parkingRowView = new ParkingRowView();
+                    parkingRowView.RowNumber = rowNumber;
+                    parkingView.Rows.Add(parkingRowView);
+
+
+                    parkingRow = park.Where(T => (T.ParkingId == parking.Id && T.Row == rowNumber))
+                      .GroupBy(x => x.Id)
+                      .Select(y => y.FirstOrDefault())
+                      .ToObservableCollection();
+
+
+                    //rows = new ObservableCollection<ParkPlaceView>();
+
+                    foreach (ParkPlace parkplace in parkingRow)
+                    {
+                        //ADD row
+                        parkPlaceView = new ParkPlaceView(parkplace);
+                        parkingRowView.Row.Add(parkPlaceView);
+                    }
+
+
+
+                }
+
+
+
+            }
+
+            return parkingsview;
+        }
+
 
         public ObservableCollection<ParkPlace> GetParkPlace()
         {

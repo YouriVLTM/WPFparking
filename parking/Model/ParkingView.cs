@@ -11,8 +11,10 @@ namespace parking.Model
     {
         public ParkingView()
         {
-            Parkings = new ObservableCollection<ParkingRowView>();
+            Rows = new ObservableCollection<ParkingRowView>();
         }
-        public ObservableCollection<ParkingRowView> Parkings { get; set; }
+
+        public ObservableCollection<ParkingRowView> Rows { get; set; }
+        public Parking Parking { get; set; }
     }
 }

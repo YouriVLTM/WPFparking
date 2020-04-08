@@ -9,6 +9,16 @@ namespace parking.Model
 {
     public class ParkPlaceView : ParkPlace
     {
+        public ParkPlaceView(ParkPlace parkplace)
+        {
+            Id = parkplace.Id;
+            Parking = parkplace.Parking;
+            Building = parkplace.Building;
+            Row = parkplace.Row;
+            Cel = parkplace.Cel;
+            Description = parkplace.Description;
+
+        }
         public ObservableCollection<Reservation> Reservation { get; set; }
     }
 }
