@@ -9,12 +9,66 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace parking.Model
 {
     public class ReservationDataService : BaseModelDataService
     {
 
+        public ObservableCollection<ParkingView> GetParkingView()
+        {
+            string sql = "Select * From Reservation re " +
+                "RIGHT JOIN ParkPlace pa ON pa.Id = re.parkPlaceId " +
+                "JOIN Parking pr ON pr.Id = pa.parkingId " +
+                "JOIN Building bu ON bu.Id = pa.buildingId " +
+                "LEFT JOIN Userx us ON us.Id = re.userId";
+
+            //parkings
+            ParkingView parkingview = new ParkingView();
+
+
+            var park = db.Query<Reservation, ParkPlace, Parking, Building, User, Reservation>(sql, (reservation, parkPlace, parking, building, user) =>
+            {
+                reservation.User = user;
+                reservation.ParkPlace = parkPlace;
+                reservation.ParkPlace.Parking = parking;
+                reservation.ParkPlace.Building = building;
+                return reservation;
+            },
+           splitOn: "Id").ToObservableCollection();
+
+            ObservableCollection<Parking> parkings = park.GroupBy(x =>  x.ParkPlace.Parking.Id )
+                .Select(y => y.FirstOrDefault().ParkPlace.Parking)
+                .ToObservableCollection();
+
+
+            var parkPlaceRows = park.GroupBy(x => x.ParkPlace.Row)
+                .Select(y => y.FirstOrDefault())
+                .Where(T => T.ParkPlace.Parking.Id == 2)
+                .ToObservableCollection();
+
+
+
+
+            ParkingRowView parkingRowView;
+            // voeg parings toe
+            foreach (Parking parking in parkings)
+            {
+                //Parkings
+                parkingRowView = new ParkingRowView();
+                parkingRowView.Parking = parking;
+                parkingview.Parkings.Add(parkingRowView);
+                //parkingView
+
+            }
+
+           
+
+
+
+            return new ObservableCollection<ParkingView>();
+        }
 
         public ObservableCollection<Reservation> GetReservation()
         {

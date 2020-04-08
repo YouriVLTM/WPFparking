@@ -53,6 +53,8 @@ namespace parking.Model
             set
             {
                 parking = value;
+                if (value != null)
+                    ParkingId = value.Id;
                 NotifyPropertyChanged();
             }
         }
@@ -76,6 +78,8 @@ namespace parking.Model
             set
             {
                 building = value;
+                if (value != null)
+                    BuildingId = value.Id;
                 NotifyPropertyChanged();
             }
         }

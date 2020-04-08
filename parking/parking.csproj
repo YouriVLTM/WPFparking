@@ -88,9 +88,12 @@
     <Compile Include="Model\LectureDataService.cs" />
     <Compile Include="Model\Parking.cs" />
     <Compile Include="Model\ParkingDataService.cs" />
+    <Compile Include="Model\ParkingRowView.cs" />
+    <Compile Include="Model\ParkingView.cs" />
     <Compile Include="Model\ParkPlace.cs" />
     <Compile Include="Model\ParkPlaceDataService.cs" />
     <Compile Include="Model\ParkPlaceRow.cs" />
+    <Compile Include="Model\ParkPlaceView.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\ReservationDataService.cs" />
     <Compile Include="Model\User.cs" />
