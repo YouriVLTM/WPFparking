@@ -12,11 +12,21 @@ namespace parking.ViewModel
     {
 
         public MainWindowViewModel()
-        {            
+        {
+            ParkingsCommand = new BaseCommand(GoToParkingsPage);
             ParkingCommand = new BaseCommand(GoToParkingPage);
             HomeCommand = new BaseCommand(GoToHomePage);
             ReserverenCommand = new BaseCommand(GoToReserverenCommand);
             StatistiekCommand = new BaseCommand(GoToStatistiekCommand);
+
+        }
+        
+
+        public ICommand ParkingsCommand { get; set; }
+        private void GoToParkingsPage()
+        {
+            PageNavigationService nav = new PageNavigationService();
+            nav.Navigate("Parkings");
 
         }
 

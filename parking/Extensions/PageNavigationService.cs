@@ -19,6 +19,11 @@ namespace parking.Extensions
         {
             switch (page)
             {
+                case "Parkings":
+                    var parkings = new Parkings();
+                    ApplicationHelper.NavigationService.Navigate(parkings);
+                    break;
+
                 case "Parking":
                     var parking = new Parking();
                     ApplicationHelper.NavigationService.Navigate(parking);

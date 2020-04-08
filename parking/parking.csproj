@@ -108,6 +108,7 @@
     <Compile Include="Extensions\PageNavigationService.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ParkingDetailsViewModel.cs" />
+    <Compile Include="ViewModel\ParkingsViewModel.cs" />
     <Compile Include="ViewModel\ParkingViewModel.cs" />
     <Compile Include="ViewModel\ReserverenViewModel.cs" />
     <Compile Include="ViewModel\StatistiekViewModel.cs" />
@@ -117,6 +118,9 @@
     </Compile>
     <Compile Include="View\ParkingDetails.xaml.cs">
       <DependentUpon>ParkingDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Parkings.xaml.cs">
+      <DependentUpon>Parkings.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Reserveren.xaml.cs">
       <DependentUpon>Reserveren.xaml</DependentUpon>
@@ -151,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ParkingDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Parkings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

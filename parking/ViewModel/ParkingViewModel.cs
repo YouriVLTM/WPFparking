@@ -15,6 +15,22 @@ namespace parking.ViewModel
     public class ParkingViewModel : BaseViewModel
     {
 
+
+        private ParkingView selectedParkingView;
+        public ParkingView SelectedParkingView
+        {
+            get
+            {
+                return selectedParkingView;
+            }
+            set
+            {
+                selectedParkingView = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         private ObservableCollection<ParkPlace> parkPlaces;
 
         public ObservableCollection<ParkPlace> ParkPlaces
@@ -95,22 +111,33 @@ namespace parking.ViewModel
 
         public ParkingViewModel()
         {
+
+            Messenger.Default.Register<ParkingView>(this, OnCoffeeReceived);
+
+            /*
             //laden data
             ParkPlaceDataService ds = new ParkPlaceDataService();
-            parkPlaces = ds.GetParkPlace();
+            //ParkingsView = ds.GetParkingsView();
 
+
+            parkPlaces = ds.GetParkPlace();
             rowViewParkPlaces = ViewParkPlaces();
 
+    */
             //instantiëren DialogService als singleton
             dialogService = new DialogService();
 
             //koppelen commands
             KoppelCommands();
 
-            //luisteren naar messages vanuit detailvenster
-            //Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
 
         }
+
+        private void OnCoffeeReceived(ParkingView parkingView)
+        {
+            SelectedParkingView = parkingView;
+        }
+
 
         private void KoppelCommands()
         {
@@ -146,6 +173,8 @@ namespace parking.ViewModel
             }
 
         }
+
+        
 
 
     }

@@ -71,9 +71,15 @@
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="CarPark" Style="{StaticResource icon}"/>
-                            <Button Content="Parking" Command="{Binding ParkingCommand }"  Style="{StaticResource buttonNav}"/>
+                            <Button Content="Parkings" Command="{Binding ParkingsCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
+                    <!--<ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CarPark" Style="{StaticResource icon}"/>
+                            <Button Content="Parking" Command="{Binding ParkingCommand }"  Style="{StaticResource buttonNav}"/>
+                        </StackPanel>
+                    </ListViewItem>-->
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AlarmClockSnooze"  Style="{StaticResource icon}"/>

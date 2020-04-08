@@ -26,14 +26,34 @@ namespace parking.Extensions
                 parkingDetailView.Close();
         }
 
-        public void ShowDetailDialog()
+        public void ShowDetailDialog(String win)
         {
+            switch (win)
+            {
+                case "ParkingDetails":
+                    parkingDetailView = new ParkingDetails();
+                    parkingDetailView.ShowDialog();
+                    break;
 
+
+                default:
+                    break;
+            }
         }
 
-        public void CloseDetailDialog()
+        public void CloseDetailDialog(String win)
         {
+            switch (win)
+            {
+                case "ParkingDetails":
+                    if (parkingDetailView != null)
+                        parkingDetailView.Close();
+                    break;
 
+
+                default:
+                    break;
+            }
         }
     }
 }

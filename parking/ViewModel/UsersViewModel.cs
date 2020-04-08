@@ -85,8 +85,6 @@ namespace parking.ViewModel
             dialogService = new DialogService();
 
             //koppelen commands
-            WijzigenCommand = new BaseCommand(WijzigenUser);
-            ToevoegenCommand = new BaseCommand(ToevoegenUser);
 
             //luisteren naar messages vanuit detailvenster
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
@@ -96,7 +94,7 @@ namespace parking.ViewModel
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
             //na update of delete mag detailvenster sluiten
-            dialogService.CloseDetailDialog();
+            //dialogService.CloseDetailDialog();
 
             //na Delete/Insert moet collectie Koffies terug ingeladen worden
             if (message.Type != UpdateFinishedMessage.MessageType.Updated)
@@ -107,25 +105,6 @@ namespace parking.ViewModel
 
         }
 
-        private void ToevoegenUser()
-        {
-            SelectedUser = new User();
-
-            Messenger.Default.Send<User>(SelectedUser);
-
-            dialogService.ShowDetailDialog();
-
-        }
-
-        private void WijzigenUser()
-        {
-            if (SelectedUser != null)
-            {
-                Messenger.Default.Send<User>(SelectedUser);
-
-                dialogService.ShowDetailDialog();
-            }
-        }
 
     }
 }

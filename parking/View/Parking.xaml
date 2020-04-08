@@ -26,7 +26,7 @@
         
         <DataTemplate x:Key="rijItemTemplate">
             <StackPanel Orientation="Vertical">
-                
+
                 <StackPanel x:Name="groenblok">
 
                     <Separator              
@@ -45,8 +45,11 @@
                 Margin="0,10,0,5"/>
 
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Rij"/>
                 <TextBlock Text="{Binding RowNumber}"/>
-                <ItemsControl ItemsSource="{Binding ParkPlace}" Margin="20" x:Name="ParkControlView">
+                </StackPanel>
+            <ItemsControl ItemsSource="{Binding Row}" Margin="20" x:Name="ParkControlView">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border
@@ -94,7 +97,7 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
         <StackPanel Margin="20" >
-            <TextBlock Text="Live Parking" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding SelectedParkingView.Parking.Name}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
 
             <WrapPanel Margin="0,0,0,30">
 
@@ -116,7 +119,7 @@
 
             <Grid>
 
-                <ItemsControl ItemsSource="{Binding RowViewParkPlaces}"
+                <ItemsControl ItemsSource="{Binding SelectedParkingView.Rows}"
 					 ItemTemplate="{StaticResource rijItemTemplate}">
                 </ItemsControl>
             </Grid>

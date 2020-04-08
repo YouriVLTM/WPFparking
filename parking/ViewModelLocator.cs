@@ -9,11 +9,22 @@ namespace parking
 {
     class ViewModelLocator
     {
+        private static ParkingsViewModel parkingsViewModel = new ParkingsViewModel();
         private static ParkingViewModel parkingViewModel = new ParkingViewModel();
         private static ParkingDetailsViewModel parkingDetailsViewModel = new ParkingDetailsViewModel();
         private static MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
         private static ReserverenViewModel reserverenViewModel = new ReserverenViewModel();
         private static StatistiekViewModel statistiekViewModel = new StatistiekViewModel();
+
+
+        public static ParkingsViewModel ParkingsViewModel
+        {
+            get
+            {
+                return parkingsViewModel;
+            }
+        }
+
 
         public static StatistiekViewModel StatistiekViewModel
         {
