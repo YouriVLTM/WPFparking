@@ -52,7 +52,7 @@ namespace parking.ViewModel
             if(parkplace.Building == null || parkplace.Parking == null)
             {
                 ParkPlaceDataService dbParkPlace = new ParkPlaceDataService();
-                SelectedParkPlace = (ParkPlaceView)dbParkPlace.GetParkPlaceWithFK(parkplace);
+                SelectedParkPlace = dbParkPlace.GetParkPlaceWithFKView(parkplace);
 
             }
             else

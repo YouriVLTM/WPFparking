@@ -16,7 +16,7 @@ namespace parking.Model
     public class ReservationDataService : BaseModelDataService
     {
 
-        public List<Reservation> GetReservationDate(DateTime dateTime)
+        public List<Reservation> GetReservationDate(DateTime dateTime, Parking parki)
         {
             // Uitschrijven SQL statement & bewaren in een string. 
             string sql = "Select * From Reservation re " +
@@ -24,7 +24,8 @@ namespace parking.Model
                 "JOIN ParkPlace pa ON pa.Id = re.parkPlaceId " +
                 "JOIN Building bu ON bu.Id = pa.buildingId " +
                 "JOIN Parking pp ON pp.Id = pa.parkingId " +
-                "Where beginTime > CONVERT(datetime, '" + dateTime + "',103)";
+                "Where beginTime > CONVERT(datetime, '" + dateTime + "',103) " +
+                "And pp.Id = '" + parki.Id + "'";
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen

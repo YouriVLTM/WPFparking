@@ -110,7 +110,7 @@ namespace parking.Model
             return new ObservableCollection<ParkPlace>((List<ParkPlace>)parkPlaces);
         }
 
-        public ParkPlace GetParkPlaceWithFK(ParkPlace parkPlace)
+        public ParkPlaceView GetParkPlaceWithFKView(ParkPlace parkPlace)
         {
             // Uitschrijven SQL statement & bewaren in een string. 
             string sql = "Select * from ParkPlace pp JOIN Building bu ON pp.buildingId = bu.Id JOIN Parking pa ON pp.parkingId = pa.Id " +
@@ -119,17 +119,17 @@ namespace parking.Model
 
             //Uitvoeren SQL statement op db instance 
             //Type casten van het generieke return type naar een collectie van contactpersonen
-            var parkPlaces = db.Query<ParkPlace, Building, Parking, ParkPlace>(sql, (parkPlac, building, parking) =>
+            var parkPlaces = db.Query<ParkPlaceView, Building, Parking, ParkPlaceView>(sql, (parkPlac, building, parking) =>
             {
                 parkPlac.Parking = parking;
                 parkPlac.Building = building;
                 return parkPlac;
             },
-            splitOn: "Id");
+            splitOn: "Id").FirstOrDefault();
 
             if(parkPlaces != null)
             {
-                return parkPlaces.First();
+                return parkPlaces; //new ParkPlaceView(parkPlaces.First());
             }
             return null;
         }

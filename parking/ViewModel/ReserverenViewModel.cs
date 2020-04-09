@@ -12,9 +12,6 @@ namespace parking.ViewModel
 {
     public class ReserverenViewModel : BaseViewModel
     {
-
-        
-
         private String location;
         public String Location
         {
@@ -49,15 +46,7 @@ namespace parking.ViewModel
         public ReserverenViewModel()
         {
             //new reserveren
-            User user = new User();
-            ParkPlace parkPlace = new ParkPlace();
-            reservation = new Reservation();
-
-            Reservation.User = user;
-            Reservation.ParkPlace = parkPlace;
-            Reservation.BeginTime = DateTime.Now;
-            Reservation.EndTime = DateTime.Now;
-
+            NewForm();
 
             //instantiëren DialogService als singleton
             dialogService = new DialogService();
@@ -98,7 +87,7 @@ namespace parking.ViewModel
         {
             if (parkplace != null)
             {
-                Messenger.Default.Send<ParkPlace>((ParkPlace)parkplace);
+                Messenger.Default.Send<ParkPlaceView>( new ParkPlaceView((ParkPlace)parkplace));
 
                 dialogService.ShowDetailDialogParkPlace();
             }
@@ -136,7 +125,7 @@ namespace parking.ViewModel
             Reservation.Status = "reserved";
 
             //user already exist 
-            UserDataService dbUser = new UserDataService();
+            /*UserDataService dbUser = new UserDataService();
 
             User us = dbUser.UserExist(Reservation.User);
 
@@ -146,13 +135,30 @@ namespace parking.ViewModel
                 dbUser.InsertUser(Reservation.User);
                 us = dbUser.UserExist(Reservation.User);
             }
-            Reservation.User = us;
+            Reservation.User = us;*/
 
             //reservation
             ReservationDataService dbReservation = new ReservationDataService();
 
             dbReservation.InsertReservation(Reservation);
 
+            MessageBox.Show("Reservatie is voltooid");
+            NewForm();
+        }
+
+
+        private void NewForm()
+        {
+            //new reserveren
+            User user = new User();
+            ParkPlace parkPlace = new ParkPlace();
+            Reservation = new Reservation();
+
+            Reservation.User = user;
+            Reservation.ParkPlace = parkPlace;
+            Reservation.BeginTime = DateTime.Now;
+            Reservation.EndTime = DateTime.Now;
+            Location = "";
         }
 
        

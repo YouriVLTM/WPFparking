@@ -88,7 +88,7 @@ namespace parking.ViewModel
         {
             if (parkplace != null)
             {
-                Messenger.Default.Send<ParkPlace>((ParkPlace)parkplace);
+                Messenger.Default.Send<ParkPlaceView>(new ParkPlaceView((ParkPlace)parkplace));
 
                 dialogService.ShowDetailDialogParkPlace();
             }

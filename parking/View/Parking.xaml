@@ -128,7 +128,7 @@
                     Margin="10,0,20,0"
                     Is24Hours="True"
                     Width="100"   
-                    Text="{Binding SelectedTime, StringFormat={}{0:HH:mm:ss}}"
+                    Text="{Binding SelectedTime, StringFormat={}{0:HH:mm}}"
                     Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                     materialDesign:HintAssist.Hint="Custom hint" />
 

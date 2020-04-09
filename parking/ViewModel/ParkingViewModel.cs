@@ -86,6 +86,8 @@ namespace parking.ViewModel
             SelectedDate = DateTime.Now;
             SelectedTime = DateTime.Now;
 
+
+
             Messenger.Default.Register<ParkingView>(this, OnCoffeeReceived);
 
             //instantiëren DialogService als singleton
@@ -136,8 +138,7 @@ namespace parking.ViewModel
 
                 ReservationDataService db = new ReservationDataService();
 
-                PreviousReservation = db.GetReservationDate(SelectedDateTime);
-
+                PreviousReservation = db.GetReservationDate(SelectedDateTime, SelectedParkingView.Parking);
 
                 foreach (Reservation reservation in PreviousReservation)
                 {
@@ -152,12 +153,19 @@ namespace parking.ViewModel
 
         private void RemoveAllReservations()
         {
-            if(PreviousReservation != null)
+            if(PreviousReservation != null )
             {
-                foreach (Reservation reservation in PreviousReservation)
+                if (PreviousReservation.Count != 0)
                 {
-                   SelectedParkingView.Rows.ElementAt(reservation.ParkPlace.Row - 1).Row.ElementAt(reservation.ParkPlace.Cel - 1).Reservation.Clear();
-                }
+                    if (PreviousReservation.FirstOrDefault().ParkPlace.Parking.Id == SelectedParkingView.Parking.Id)
+                    {
+                        foreach (Reservation reservation in PreviousReservation)
+                        {
+                            SelectedParkingView.Rows.ElementAt(reservation.ParkPlace.Row - 1).Row.ElementAt(reservation.ParkPlace.Cel - 1).Reservation.Clear();
+                        }
+                    }
+                }               
+               
             }           
         }
 
