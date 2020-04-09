@@ -81,15 +81,18 @@
                             DisplayMemberBinding="{Binding Status}"
                             Header="Status" />
                         <GridViewColumn
-                            DisplayMemberBinding="{Binding BeginTime}"
+                            DisplayMemberBinding="{Binding BeginTime, StringFormat='dd/MM/yyyy HH:mm'}"
                             Header="Begin" />
                         <GridViewColumn
-                            DisplayMemberBinding="{Binding EndTime}"
+                            DisplayMemberBinding="{Binding EndTime, StringFormat='dd/MM/yyyy HH:mm'}"
                             Header="End" />
+
                     </GridView>
-                   
+
+
                 </ListView.View>
             </ListView>
+            
 
 
         </StackPanel> 

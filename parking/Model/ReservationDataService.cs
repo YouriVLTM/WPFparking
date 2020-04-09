@@ -16,6 +16,32 @@ namespace parking.Model
     public class ReservationDataService : BaseModelDataService
     {
 
+        public List<Reservation> GetReservationDate(DateTime dateTime)
+        {
+            // Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select * From Reservation re " +
+                "JOIN Userx us ON us.Id = re.userId " +
+                "JOIN ParkPlace pa ON pa.Id = re.parkPlaceId " +
+                "JOIN Building bu ON bu.Id = pa.buildingId " +
+                "JOIN Parking pp ON pp.Id = pa.parkingId " +
+                "Where beginTime > CONVERT(datetime, '" + dateTime + "',103)";
+
+            //Uitvoeren SQL statement op db instance 
+            //Type casten van het generieke return type naar een collectie van contactpersonen
+            var reser = db.Query<Reservation, User, ParkPlace, Building, Parking, Reservation>(sql, (reservation, user, parkplace, building, parking) =>
+            {
+                reservation.User = user;
+                reservation.ParkPlace = parkplace;
+                reservation.ParkPlace.Parking = parking;
+                reservation.ParkPlace.Building = building;
+                return reservation;
+            },
+           splitOn: "Id").ToList();
+
+            //ObservableCollection<Reservation> reservations = db.Query<Reservation>(sql).ToObservableCollection();
+
+            return reser;
+        }
         public ParkingsView GetParkingsView()
         {
             string sql = "Select * From Reservation re " +
@@ -85,11 +111,7 @@ namespace parking.Model
                         parkingRowView.Row.Add(parkPlaceView);
                     }
 
-                    
-
                 }
-
-
 
             }
 

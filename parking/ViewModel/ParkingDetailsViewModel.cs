@@ -13,12 +13,12 @@ namespace parking.ViewModel
     {
         public ParkingDetailsViewModel()
         {
-            Messenger.Default.Register<ParkPlace>(this, OnParkPlaceReceived);
+            Messenger.Default.Register<ParkPlaceView>(this, OnParkPlaceReceived);
 
         }
 
-        private ParkPlace selectedParkPlace;
-        public ParkPlace SelectedParkPlace
+        private ParkPlaceView selectedParkPlace;
+        public ParkPlaceView SelectedParkPlace
         {
             get
             {
@@ -32,7 +32,6 @@ namespace parking.ViewModel
         }
 
         private ObservableCollection<Reservation> reservations;
-
         public ObservableCollection<Reservation> Reservations
         {
             get
@@ -48,12 +47,12 @@ namespace parking.ViewModel
 
 
 
-        private void OnParkPlaceReceived(ParkPlace parkplace)
+        private void OnParkPlaceReceived(ParkPlaceView parkplace)
         {
             if(parkplace.Building == null || parkplace.Parking == null)
             {
                 ParkPlaceDataService dbParkPlace = new ParkPlaceDataService();
-                SelectedParkPlace = dbParkPlace.GetParkPlaceWithFK(parkplace);
+                SelectedParkPlace = (ParkPlaceView)dbParkPlace.GetParkPlaceWithFK(parkplace);
 
             }
             else
@@ -61,13 +60,14 @@ namespace parking.ViewModel
                 SelectedParkPlace = parkplace;
             }
 
-            // get reservations         
-
+            // get reservations
             if (SelectedParkPlace != null)
             {
                 ReservationDataService db = new ReservationDataService();
                 Reservations = db.GetReservationParkPlace(SelectedParkPlace);
             }
         }
+
+
     }
 }

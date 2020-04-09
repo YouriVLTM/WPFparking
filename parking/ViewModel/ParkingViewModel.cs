@@ -14,8 +14,6 @@ namespace parking.ViewModel
 {
     public class ParkingViewModel : BaseViewModel
     {
-
-
         private ParkingView selectedParkingView;
         public ParkingView SelectedParkingView
         {
@@ -30,100 +28,66 @@ namespace parking.ViewModel
             }
         }
 
-
-        private ObservableCollection<ParkPlace> parkPlaces;
-
-        public ObservableCollection<ParkPlace> ParkPlaces
+        private DateTime selectedDate;
+        public DateTime SelectedDate
         {
             get
             {
-                return parkPlaces;
+                return selectedDate;
             }
             set
             {
-                parkPlaces = value;
+                selectedDate = value;
                 NotifyPropertyChanged();
             }
         }
 
 
-        private List<ParkPlaceRow> rowViewParkPlaces;
-
-        public List<ParkPlaceRow> RowViewParkPlaces
-        {
-            get{
-                return ViewParkPlaces();
-            }
-            set
-            {
-                rowViewParkPlaces = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-
-        private List<ParkPlaceRow> viewParkPlaces;
-
-        public List<ParkPlaceRow> ViewParkPlaces()
-        {
-                ParkPlaceRow parkrow = new ParkPlaceRow();
-                viewParkPlaces = new List<ParkPlaceRow>();
-                foreach (ParkPlace parkPlace in ParkPlaces)
-                {
-                    if (viewParkPlaces.Count() != parkPlace.Row)
-                    {
-                        parkrow = new ParkPlaceRow();
-                        parkrow.ParkPlace.Add(parkPlace);
-                        parkrow.RowNumber = parkPlace.Row;
-                        parkrow.ParkingName = parkPlace.Parking.Name;
-
-                        // lijst toevoegen
-                        //park view
-                        viewParkPlaces.Add(parkrow);
-                    }
-                    else
-                    {
-                        parkrow.ParkPlace.Add(parkPlace);
-                        parkrow.RowNumber = parkPlace.Row;
-                    }
-                }
-
-                return viewParkPlaces;
-        }
-
-
-        private ParkPlace selectedParkPlace;
-        public ParkPlace SelectedParkPlace
+        private DateTime selectedTime;
+        public DateTime SelectedTime
         {
             get
             {
-                return selectedParkPlace;
+                return selectedTime;
             }
             set
             {
-                selectedParkPlace = value;
+                selectedTime = value;
                 NotifyPropertyChanged();
             }
         }
+
+        private DateTime selectedDateTime;
+        public DateTime SelectedDateTime
+        {
+            get
+            {
+                return new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedTime.Hour, SelectedTime.Minute, SelectedTime.Second);
+            }
+            set
+            {
+                selectedDateTime = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        public List<Reservation> PreviousReservation { get; set; }
+
+
+
 
 
         private DialogService dialogService;
 
         public ParkingViewModel()
         {
+            //inistialiseer date
+            SelectedDate = DateTime.Now;
+            SelectedTime = DateTime.Now;
 
             Messenger.Default.Register<ParkingView>(this, OnCoffeeReceived);
 
-            /*
-            //laden data
-            ParkPlaceDataService ds = new ParkPlaceDataService();
-            //ParkingsView = ds.GetParkingsView();
-
-
-            parkPlaces = ds.GetParkPlace();
-            rowViewParkPlaces = ViewParkPlaces();
-
-    */
             //instantiëren DialogService als singleton
             dialogService = new DialogService();
 
@@ -142,6 +106,7 @@ namespace parking.ViewModel
         private void KoppelCommands()
         {
             ViewCommand = new BaseParCommand(ViewParkPlaceDetail);
+            GetReservationCommand = new BaseCommand(GetReservation);
         }
 
 
@@ -151,7 +116,7 @@ namespace parking.ViewModel
         {
             if(park != null)
             {
-                Messenger.Default.Send<ParkPlace>((ParkPlace)park);
+                Messenger.Default.Send<ParkPlaceView>((ParkPlaceView)park);
 
                 dialogService.ShowDetailDialogParkPlace();
             }
@@ -160,21 +125,44 @@ namespace parking.ViewModel
         }
 
 
-        private void OnMessageReceived(UpdateFinishedMessage message)
-        {
-            //na update of delete mag detailvenster sluiten
-            dialogService.CloseDetailDialogParkPlace();
+        public ICommand GetReservationCommand { get; set; }
 
-            //na Delete/Insert moet collectie Koffies terug ingeladen worden
-            if (message.Type != UpdateFinishedMessage.MessageType.Updated)
+        private void GetReservation()
+        {
+            if (SelectedDateTime != null)
             {
-                ParkPlaceDataService ds = new ParkPlaceDataService();
-                parkPlaces = ds.GetParkPlace();
+                //remove all list
+                RemoveAllReservations();
+
+                ReservationDataService db = new ReservationDataService();
+
+                PreviousReservation = db.GetReservationDate(SelectedDateTime);
+
+
+                foreach (Reservation reservation in PreviousReservation)
+                {
+                    SelectedParkingView.Rows.ElementAt(reservation.ParkPlace.Row - 1).Row.ElementAt(reservation.ParkPlace.Cel - 1).fitlerDateTime = SelectedDateTime;
+                    SelectedParkingView.Rows.ElementAt(reservation.ParkPlace.Row - 1).Row.ElementAt(reservation.ParkPlace.Cel - 1).Reservation.Add(reservation);
+                }
+                
             }
+
 
         }
 
-        
+        private void RemoveAllReservations()
+        {
+            if(PreviousReservation != null)
+            {
+                foreach (Reservation reservation in PreviousReservation)
+                {
+                   SelectedParkingView.Rows.ElementAt(reservation.ParkPlace.Row - 1).Row.ElementAt(reservation.ParkPlace.Cel - 1).Reservation.Clear();
+                }
+            }           
+        }
+
+
+
 
 
     }

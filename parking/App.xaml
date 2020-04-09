@@ -9,6 +9,7 @@
         
         <ResourceDictionary>
             <local:ViewModelLocator x:Key="mainViewModelLocator" />
+
             <!-- primary -->
             <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#6abf69"/>
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF"/>
@@ -33,8 +34,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
-        
 
 
 

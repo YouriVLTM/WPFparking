@@ -68,9 +68,28 @@ namespace parking.ViewModel
 
         private void KoppelCommands()
         {
+            GetUserCommand = new BaseCommand(GetUser);
             SaveReserverenCommand = new BaseCommand(SaveReserveren);
             GetParkingPlaceCommand = new BaseCommand(GetParkingPlace);
             ViewParkingPlaceCommand = new BaseParCommand(ViewParkingPlace);
+
+        }
+
+        public ICommand GetUserCommand { get; set; }
+        private void GetUser()
+        {
+            //user already exist 
+            UserDataService dbUser = new UserDataService();
+            User us = dbUser.UserExist(Reservation.User);
+
+            if (us == null)
+            {
+                MessageBox.Show("User didn't exist");
+            }
+            else
+            {
+                Reservation.User = us;
+            }
         }
 
 

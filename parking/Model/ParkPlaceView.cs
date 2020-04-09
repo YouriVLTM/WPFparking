@@ -18,7 +18,11 @@ namespace parking.Model
             Cel = parkplace.Cel;
             Description = parkplace.Description;
 
+            Reservation = new ObservableCollection<Reservation>();
+
         }
         public ObservableCollection<Reservation> Reservation { get; set; }
+
+        public DateTime fitlerDateTime { get; set; }
     }
 }

@@ -38,6 +38,8 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 
             <StackPanel Margin="20" >
+
+
                 <TextBlock Text="Verschillende parkings" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
 
                 <Button
