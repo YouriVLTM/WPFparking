@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace parking
 {
@@ -15,6 +16,7 @@ namespace parking
         private static MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
         private static ReserverenViewModel reserverenViewModel = new ReserverenViewModel();
         private static StatistiekViewModel statistiekViewModel = new StatistiekViewModel();
+
 
 
         public static ParkingsViewModel ParkingsViewModel
