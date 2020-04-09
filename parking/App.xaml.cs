@@ -25,6 +25,7 @@ namespace parking
         {
             SplashScreen splash = new SplashScreen();
             splash.Show();
+
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
@@ -36,6 +37,7 @@ namespace parking
             if(remaining > 0)
                 Thread.Sleep(remaining);
 
+            
             splash.Close();
             
         }
