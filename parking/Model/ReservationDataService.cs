@@ -217,13 +217,13 @@ namespace parking.Model
                 "bu.location ='" + location + "' "+
                 "AND " +
                 "( " +
-                "res.beginTime NOT BETWEEN CONVERT(datetime, '"+ reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "res.beginTime NOT BETWEEN CONVERT(datetime, '"+ reservation.BeginTime + "' ,103) AND CONVERT(datetime, '" + reservation.EndTime + "',103) " +
                 "OR " +
                 "res.beginTime IS NULL " +
                 ") " +
                 "AND " +
                 "( " +
-                "res.endTime NOT BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "res.endTime NOT BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "',103) AND CONVERT(datetime, '" + reservation.EndTime + "',103) " +
                 "OR " +
                 "res.endTime IS NULL " +
                 ") " +
@@ -235,9 +235,9 @@ namespace parking.Model
                 "Where " +
                 "bu.location ='" + location + "' " +
                 "AND " +
-                "res.beginTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "res.beginTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "',103) AND CONVERT(datetime, '" + reservation.EndTime + "',103) " +
                 "OR " +
-                "res.endTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "') AND CONVERT(datetime, '" + reservation.EndTime + "') " +
+                "res.endTime BETWEEN CONVERT(datetime, '" + reservation.BeginTime + "',103) AND CONVERT(datetime, '" + reservation.EndTime + "',103) " +
                 ") " +
                 "ORDER by res.Id";
 

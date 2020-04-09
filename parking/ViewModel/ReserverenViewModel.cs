@@ -125,7 +125,7 @@ namespace parking.ViewModel
             Reservation.Status = "reserved";
 
             //user already exist 
-            /*UserDataService dbUser = new UserDataService();
+            UserDataService dbUser = new UserDataService();
 
             User us = dbUser.UserExist(Reservation.User);
 
@@ -135,7 +135,7 @@ namespace parking.ViewModel
                 dbUser.InsertUser(Reservation.User);
                 us = dbUser.UserExist(Reservation.User);
             }
-            Reservation.User = us;*/
+            Reservation.User = us;
 
             //reservation
             ReservationDataService dbReservation = new ReservationDataService();
