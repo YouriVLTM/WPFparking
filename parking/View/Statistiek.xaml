@@ -22,10 +22,10 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20" >
-            <TextBlock Text="Statistiek" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Statistics" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
             
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Meest gebruikte parking plaats" FontWeight="Bold" Padding="0,0,10,0"/>
+                <TextBlock Text="Most used parking place" FontWeight="Bold" Padding="0,0,10,0"/>
                 <TextBlock x:Name="txt_parkplace" Text="{Binding MostUsedParkPlace.Id}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                 <Button
                     Margin="0,0,0,30"
@@ -45,11 +45,11 @@
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Meest gereserveerd door" FontWeight="Bold" Padding="0,0,10,0"/>
+                <TextBlock Text="Most reserved by" FontWeight="Bold" Padding="0,0,10,0"/>
                 <TextBlock Text="{Binding MostUsedUser.FullName}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
             </StackPanel>
 
-            <TextBlock Text="Gemiddelde reservaties per dag" FontWeight="Bold" FontSize="19"  Margin="0,0,0,10"/>
+            <TextBlock Text="Average reservations per day" FontWeight="Bold" FontSize="19"  Margin="0,0,0,10"/>
 
             <lvc:CartesianChart Series="{Binding CountReservationsPerDay}" LegendLocation="Left" Height="250">
                 <lvc:CartesianChart.AxisX>

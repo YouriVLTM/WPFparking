@@ -50,19 +50,19 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
-                    <TextBlock Text="Dichtsbijzijnd gebouw" FontWeight="Bold" FontSize="19" Margin="0,0,0,10"/>
+                    <TextBlock Text="Closest building" FontWeight="Bold" FontSize="19" Margin="0,0,0,10"/>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Gebouw" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="Building" FontWeight="Bold" Padding="0,0,10,0"/>
                         <TextBlock Text="{Binding SelectedParkPlace.Building.Place}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Close Location" FontWeight="Bold" Padding="0,0,10,0"/>
+                        <TextBlock Text="Closest Location" FontWeight="Bold" Padding="0,0,10,0"/>
                         <TextBlock Text="{Binding SelectedParkPlace.Building.Location}" Padding="0,0,10,0" Foreground="{Binding Source={StaticResource PrimaryHueLightBrush}}"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
 
-            <TextBlock Text="Reservaties" FontWeight="Bold" FontSize="19"/>
+            <TextBlock Text="Reservation" FontWeight="Bold" FontSize="19"/>
 
             <ListView Name="ReservationList" ItemsSource="{Binding Reservations}">
 

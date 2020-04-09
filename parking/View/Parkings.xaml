@@ -40,12 +40,12 @@
             <StackPanel Margin="20" >
 
 
-                <TextBlock Text="Verschillende parkings" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Different Parkings" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
 
                 <Button
                 Style="{StaticResource buttonGetParking}"                
                 Command="{Binding GetParkingCommand}"
-                Content="Parking Bekijken"/>
+                Content="Show Parking"/>
 
 
                 <ListView Name="ParkingsList" ItemsSource="{Binding ParkingsView.Parkings}" SelectedItem="{Binding SelectedParkingView}">

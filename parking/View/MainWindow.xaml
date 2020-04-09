@@ -45,7 +45,7 @@
 
     <Grid>
         <Grid x:Name="extendedTitleBar" Height="30" VerticalAlignment="Top" Background="{Binding Source={StaticResource SecondaryLightBrush}}">
-            <TextBlock Text="Parking" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Source={StaticResource SecondaryLightForegroundBrush}}" FontSize="22"/>
+            <TextBlock Text="Park place" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Source={StaticResource SecondaryLightForegroundBrush}}" FontSize="22"/>
         </Grid>
         <Grid Width="200" HorizontalAlignment="Left" 
               Background="White" materialDesign:ShadowAssist.ShadowDepth="Depth5">
@@ -71,25 +71,19 @@
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="CarPark" Style="{StaticResource icon}"/>
-                            <Button Content="Parkings" Command="{Binding ParkingsCommand }"  Style="{StaticResource buttonNav}"/>
+                            <Button Content="Parking" Command="{Binding ParkingsCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
-                    <!--<ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CarPark" Style="{StaticResource icon}"/>
-                            <Button Content="Parking" Command="{Binding ParkingCommand }"  Style="{StaticResource buttonNav}"/>
-                        </StackPanel>
-                    </ListViewItem>-->
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AlarmClockSnooze"  Style="{StaticResource icon}"/>
-                            <Button Content="Reserveren" Command="{Binding ReserverenCommand }"  Style="{StaticResource buttonNav}"/>
+                            <Button Content="Reservation" Command="{Binding ReserverenCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ChartBar"  Style="{StaticResource icon}"/>
-                            <Button Content="Statistiek" Command="{Binding StatistiekCommand }"  Style="{StaticResource buttonNav}"/>
+                            <Button Content="Statistics" Command="{Binding StatistiekCommand }"  Style="{StaticResource buttonNav}"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

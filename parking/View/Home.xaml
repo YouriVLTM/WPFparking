@@ -23,7 +23,7 @@
 
 
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBlock Text="Parkeren" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Left"/>
+                <TextBlock Text="Park" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -31,8 +31,8 @@
             </StackPanel>
 
 
-            <TextBlock Text="Bent u de sdrukke parkeerplaatsen op Thomas More ook beu?"/>
-            <TextBlock Text="Reserveer u parking en kom nooit meer te laat!"/>
+            <TextBlock Text="Are you also tired of the busy parking lots at Thomas More?"/>
+            <TextBlock Text="Reserve your parking and never be late again!"/>
 
 
 
@@ -48,14 +48,14 @@
             >
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="33" Text="1"></TextBlock>
                 </Border>
-                <TextBlock Text="Download de windows applicatie" VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
+                <TextBlock Text="Download the windows application" VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
 
             </WrapPanel>
 
             <WrapPanel Margin="0,10,0,0" 
             HorizontalAlignment="Right" >
 
-                <TextBlock Text="Reserveer een parking op maat. " VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
+                <TextBlock Text="Reserve a parking space. " VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
                 <Border            
             CornerRadius="50"
         Width="60"
@@ -80,13 +80,13 @@
             >
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="33" Text="3"></TextBlock>
                 </Border>
-                <TextBlock Text="Download de windows applicatie" VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
+                <TextBlock Text="System show your perfect park place." VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
 
             </WrapPanel>
 
             <WrapPanel Margin="0,10,0,0" HorizontalAlignment="Right">
 
-                <TextBlock Text="Rij naar de desbetreffende parkeerplaats." VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
+                <TextBlock Text="Drive to the relevant park place." VerticalAlignment="Center" FontWeight="Bold" Padding="10,0,10,0"/>
                 <Border               
             CornerRadius="50"
         Width="60"

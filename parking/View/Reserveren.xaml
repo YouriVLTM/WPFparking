@@ -112,8 +112,8 @@
         <StackPanel Margin="20" >
 
 
-            <TextBlock Text="Reservatie" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
-            <TextBlock Text="Persoonlijk Gegevens"
+            <TextBlock Text="Reservation" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Personal Data"
                       Style="{StaticResource txtHeadline2}"/>
 
             
@@ -152,7 +152,7 @@
 
                     <StackPanel>
                         <TextBox
-                      materialDesign:HintAssist.Hint="GSM nummer"
+                      materialDesign:HintAssist.Hint="Phone number"
                       Text="{Binding Reservation.User.PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True}"
                         />
                     </StackPanel>
@@ -181,7 +181,7 @@
                     <TextBlock Text="Start" Style="{StaticResource txtHeadline2}"/>
                     <TextBox
                         Name="txt_location"
-                      materialDesign:HintAssist.Hint="Locatie"
+                      materialDesign:HintAssist.Hint="Location"
                       Text="{Binding Location}"
                         />
 
@@ -196,7 +196,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="1">
-                    <TextBlock Text="Verlaat" Style="{StaticResource txtHeadline2}"/>
+                    <TextBlock Text="Leave" Style="{StaticResource txtHeadline2}"/>
                     <TextBox
                          Name="txt_endTime"
                       materialDesign:HintAssist.Hint="day/month/year Hours:min"
@@ -212,7 +212,7 @@
             <Button
                 Style="{StaticResource buttonGetParkPlace}"                
                 Command="{Binding GetParkingPlaceCommand}"
-                Content="Parking plaats bekijken"/>
+                Content="Calc Park place"/>
            
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
@@ -232,8 +232,8 @@
             <Button
                 Style="{StaticResource buttonReservation}"
                 Command="{Binding SaveReserverenCommand}"
-                ToolTip="Reserveren"
-                Content="Reserveren"/>
+                ToolTip="Reservation"
+                Content="Reservation"/>
 
         </StackPanel>
     </ScrollViewer>
