@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace parking.View
 {
     /// <summary>
-    /// Interaction logic for SplashScreen.xaml
+    /// Interaction logic for MySplashScreen.xaml
     /// </summary>
-    public partial class SplashScreen : Window
+    public partial class MySplashScreen : Window
     {
-        public SplashScreen()
+        public MySplashScreen()
         {
             InitializeComponent();
         }

@@ -140,7 +140,7 @@ namespace UnitTestParking
             park.Id = 2;
             ParkPlaceDataService db = new ParkPlaceDataService();
 
-            ParkPlace newpark = db.GetParkPlaceWithFK(park);
+            ParkPlace newpark = db.GetParkPlaceWithFKView(park);
 
             Assert.AreEqual(2, newpark.Id);
 

@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using parking.ViewModel;
+using parking.View;
 
 namespace parking
 {
@@ -23,7 +24,8 @@ namespace parking
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            SplashScreen splash = new SplashScreen();
+            MySplashScreen splash = new MySplashScreen();
+
             splash.Show();
 
             Stopwatch timer = new Stopwatch();
