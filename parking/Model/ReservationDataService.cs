@@ -261,6 +261,14 @@ namespace parking.Model
             return parkplace;
         }
 
+        public Boolean IsValidReservation(Reservation reservation)
+        {
+            string sql = "Select * from Reservation " +
+                "Where parkPlaceId = @ParkPlaceId AND beginTime = @BeginTime AND endTime = @EndTime";
+            Reservation reservations = db.Query<Reservation>(sql, new { reservation.ParkPlaceId, reservation.BeginTime, reservation.EndTime }).FirstOrDefault();
+            return reservations == null;
+        }
+
         public void UpdateReservation(Reservation reservation)
         {
             // SQL statement update 

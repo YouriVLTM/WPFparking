@@ -27,6 +27,14 @@ namespace parking.Model
             return lectures;
         }
 
+        public Boolean IsValidLecture(Lecture lecture)
+        {
+            string sql = "Select * from Lecture " +
+                "Where location = @location AND course = @course AND date = @date";
+            Lecture lectures = db.Query<Lecture>(sql, new { lecture.Location, lecture.Course, lecture.Date }).FirstOrDefault();
+            return lectures == null;
+        }
+
         public void UpdateLecture(Lecture lecture)
         {
             // SQL statement update 

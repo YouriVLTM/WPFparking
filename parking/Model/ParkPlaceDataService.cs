@@ -134,6 +134,14 @@ namespace parking.Model
             return null;
         }
 
+        public Boolean IsValidParkPlace(ParkPlace parkPlace)
+        {
+            string sql = "Select * from ParkPlace " +
+                "Where parkingId = @ParkingId AND row = @Row AND cel = @Cel";
+            ParkPlace parkPlaces = db.Query<ParkPlace>(sql, new { parkPlace.ParkingId, parkPlace.Row, parkPlace.Cel }).FirstOrDefault();
+            return parkPlaces == null;
+        }
+
         public void UpdateParkPlace(ParkPlace parkplace)
         {
             // SQL statement update 

@@ -27,6 +27,14 @@ namespace parking.Model
             return parkings;
         }
 
+        public Boolean IsValidPakring(Parking parking)
+        {
+            string sql = "Select * from Pakring " +
+                "Where name = @Name";
+            Parking parkings = db.Query<Parking>(sql, new { parking.Name }).FirstOrDefault();
+            return parkings == null;
+        }
+
         public void UpdateParking(Parking parking)
         {
             // SQL statement update 

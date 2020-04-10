@@ -34,7 +34,7 @@ namespace UnitTestParking
         public void TestMethodAantalUsers()
         {
             var viewmodel = new UsersViewModel();
-            Assert.AreEqual(8, viewmodel.Users.Count);
+            Assert.AreEqual(12, viewmodel.Users.Count);
         }
 
         [TestMethod]
@@ -83,11 +83,13 @@ namespace UnitTestParking
             building.Description = "Mooi gebouw";
             building.Location = "B202";
 
+
             parkPlace.Parking = parking;
             parkPlace.Building = building;
             parkPlace.Row = 10;
             parkPlace.Cel = 1;
             parkPlace.Description = "Hello world";
+
 
             Assert.AreEqual(parking, parkPlace.Parking);
             Assert.AreEqual(building, parkPlace.Building);
@@ -182,9 +184,7 @@ namespace UnitTestParking
 
             ParkPlace park = ds.GetNewParkPlaces(reservation, location);
 
-
-
-            Assert.AreEqual(9, park.Id);
+            Assert.AreEqual(16, park.Id);
 
         }
 
@@ -197,7 +197,7 @@ namespace UnitTestParking
             ReservationDataService ds = new ReservationDataService();
 
             ObservableCollection<Reservation> reservations = ds.GetReservationParkPlace(parkplace);
-            Assert.AreEqual(4, reservations.Count);
+            Assert.AreEqual(3, reservations.Count);
 
         }
 

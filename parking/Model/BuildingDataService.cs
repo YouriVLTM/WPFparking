@@ -27,6 +27,14 @@ namespace parking.Model
             return buildings;
         }
 
+        public Boolean IsValidBuilding(Building building)
+        {
+            string sql = "Select * from Building " +
+                "Where place = @place AND location = @location";
+            Building buildings = db.Query<Building>(sql, new { building.Place, building.Location }).FirstOrDefault();
+            return buildings == null;
+        }
+
         public void UpdateBuilding(Building building)
         {
             // SQL statement update 
