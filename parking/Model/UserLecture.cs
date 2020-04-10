@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    public class UserLecture : BaseModel
+    public class UserLecture : BaseModel, IDataErrorInfo
     {
         private int id;
         private int lectureId;
-        private string userId;
+        private int userId;
 
         private Lecture lecture;
         private User user;
@@ -53,7 +53,7 @@ namespace parking.Model
             }
         }
 
-        public string UserId
+        public int UserId
         {
             get
             {
@@ -74,6 +74,29 @@ namespace parking.Model
                 user = value;
                 NotifyPropertyChanged();
                 
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = string.Empty;
+                switch (columnName)
+                {
+                    case "LectureId": if (LectureId == 0) result = "LectureId moet ingevuld zijn!"; break;
+                    case "UserId": if (UserId == 0) result = "UserId moet ingevuld zijn!"; break;
+                };
+                return result;
+
             }
         }
     }

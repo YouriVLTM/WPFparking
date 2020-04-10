@@ -94,7 +94,6 @@
     <Compile Include="Model\view\ParkingView.cs" />
     <Compile Include="Model\ParkPlace.cs" />
     <Compile Include="Model\ParkPlaceDataService.cs" />
-    <Compile Include="Model\ParkPlaceRow.cs" />
     <Compile Include="Model\view\ParkPlaceView.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\ReservationDataService.cs" />

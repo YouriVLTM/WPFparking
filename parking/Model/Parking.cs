@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    public class Parking : BaseModel
+    public class Parking : BaseModel, IDataErrorInfo
     {
 
         private int id;
@@ -39,5 +39,28 @@ namespace parking.Model
                 NotifyPropertyChanged();
             }
         }
+
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = string.Empty;
+                switch (columnName)
+                {
+                    case "Name": if (string.IsNullOrEmpty(Name)) result = "Name moet ingevuld zijn!"; break;
+                };
+                return result;
+
+            }
+        }
+
     }
 }

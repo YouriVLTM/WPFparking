@@ -18,7 +18,6 @@ namespace parking.ViewModel
             HomeCommand = new BaseCommand(GoToHomePage);
             ReserverenCommand = new BaseCommand(GoToReserverenCommand);
             StatistiekCommand = new BaseCommand(GoToStatistiekCommand);
-
         }
         
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace parking.Model
 {
-    public class User : BaseModel, IDataErrorInfo
+    public class User : BaseModel
     {
         private int id;
         private string prename;

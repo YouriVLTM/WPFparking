@@ -47,8 +47,8 @@ namespace parking.Model
 
         public void InsertBuilding(Building building)
         {
-            // SQL statement delete 
-            string sql = "Insert Building(place,description,location) values(@prename,@lastname,@phoneNumber)";
+            // SQL statement Insert
+            string sql = "Insert Building(place,description,location) values(@place,@description,@location)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { building.Place, building.Description, building.Location});
